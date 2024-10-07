@@ -1,0 +1,99 @@
+[
+    {
+      "id": "TC_PM_1.1.1",
+      "cdate": "2024-07-24",
+      "title": "Verify the system allows to create a project code",
+      "description": "test_description1",
+      "mname": "Book flights",
+      "priority": "High",
+      "tctype": "Positive",
+      "comments": "Successfully Tested",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.User has searched for flights for a particular route on a specific date."
+    },
+    {
+      "id": "TC_PM_1.1.2",
+      "cdate": "2024-08-25",
+      "title": "Verify the system allows to create different stages in project with value date  and assign cost for each stages",
+      "description": "test_description2",
+      "mname": "Login",
+      "priority": "Medium",
+      "tctype": "Negative",
+      "comments": "Testing Created",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.Tested a specific date."
+    },
+    {
+      "id": "TC_PM_1.1.3",
+      "cdate": "2024-09-26",
+      "title": "Verify by linking the document  in different stages",
+      "description": "test_description3",
+      "mname": "My Pages",
+      "priority": "Low",
+      "tctype": "Positive",
+      "comments": "Implementaion Success",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.Tested a specific date in Pre-conditions."
+   },
+    {
+      "id": "TC_PM_1.1.4",
+      "cdate": "2024-10-27",
+      "title": "Verify the system allows to create a timesheet for whom the project has been assigned",
+      "description": "test_description4",
+      "mname": "Payment",
+      "priority": "High",
+      "tctype": "Negative",
+      "comments": "Payment Sending",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.Tested a specific date."
+    },
+    {
+      "id": "TC_PM_1.1.5",
+      "cdate": "2024-11-28",
+      "title": "Choose cabin",
+      "description": "test_description5",
+      "mname": "Login",
+      "priority": "Medium",
+      "tctype": "Positive",
+      "comments": "Review Completed",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.User has searched for flights for a particular route on a specific date."
+    },
+    {
+      "id": "TC_PM_1.1.6",
+      "cdate": "2024-12-29",
+      "title": "Choose airport",
+      "description": "test_description1",
+      "mname": "Book flights",
+      "priority": "Low",
+      "tctype": "Negative",
+      "comments": "Successfully Tested",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.Tested a specific date."
+    },
+    {
+      "id": "TC_PM_1.1.7",
+      "cdate": "2024-01-30",
+      "title": "Choose dates",
+      "description": "test_description2",
+      "mname": "Login",
+      "priority": "High",
+      "tctype": "Positive",
+      "comments": "Testing Created",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.User has searched for flights for a particular route on a specific date."
+    },
+    {
+      "id": "TC_PM_1.1.8",
+      "cdate": "2024-02-31",
+      "title": "See flight information",
+      "description": "test_description3",
+      "mname": "My Pages",
+      "priority": "Medium",
+      "tctype": "Negative",
+      "comments": "Implementaion Success",
+      "file": "assets/images/user/test-file.text",
+      "pconditions": "User has logged in to the website.Tested a specific date."
+   }
+  ]
+  
