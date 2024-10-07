@@ -1,0 +1,336 @@
+{
+   "aid": {
+     "TEXT": "ஏபிஐ ஐடி"
+    },
+    "api": {
+      "TEXT": "ஏபிஐ"
+     },
+  "pcode": {
+    "TEXT": "திட்டக் குறியீடு"
+   },
+   "pname": {
+    "TEXT": "திட்டத்தின் பெயர்"
+   },
+   "spcode": {
+    "TEXT": "துணை திட்டக் குறியீடு"
+   },
+   "spname": {
+    "TEXT": "துணைத் திட்டத்தின் பெயர்"
+   },
+   "aprotocol": {
+     "TEXT": "ஏபிஐ நெறிமுறை"
+   },
+   "atype": {
+     "TEXT": "ஏபிஐ வகை"
+   },
+   "atitle": {
+     "TEXT": "ஏபிஐ தலைப்பு"
+   },
+   "armethod": {
+     "TEXT": "ஏபிஐ கோரிக்கை முறை"
+   },
+   "region": {
+     "TEXT": "பிராந்தியம்"
+   },
+   "uby": {
+     "TEXT": "மூலம் புதுப்பிக்கப்பட்டது"
+   },
+   "actions": {
+     "TEXT": "செயல்கள்"
+    },
+  "mylinks": {
+    "TEXT": "எனது இணைப்புகள்"
+  },
+  "adminprivilege": {
+    "TEXT": "நிர்வாக சிறப்புரிமை"
+  },
+  "url": {
+    "TEXT": "யுஆர்எல்"
+  },
+  "title": {
+    "TEXT": "தலைப்பு"
+  },
+  "home": {
+    "TEXT": "வீடு"
+  },
+  "dashboard": {
+    "TEXT": "டாஷ்போர்டு"
+  },
+  "mylinks>add": {
+    "TEXT": "எனது இணைப்புகள் > சேர்"
+  },
+  "mylinks>view": {
+    "TEXT": "எனது இணைப்புகள் > காண்க"
+  },
+  "mylinks>edit": {
+    "TEXT": "எனது இணைப்புகள் > திருத்து"
+  },
+  "mylinks>delete": { 
+    "TEXT": "எனது இணைப்புகள் > நீக்கு"
+  },
+  "urlisreq": {
+    "TEXT": "யுஆர்எல் தேவை"
+  },
+  "rusuretodelete": {
+    "TEXT": "நீக்குவது உறுதியா?"
+  },
+  "delete": {
+    "TEXT": "நீக்கு"
+  },
+  "record": {
+    "TEXT": "பதிவு"
+  },
+  "records": {
+    "TEXT": "பதிவுகள்"
+  },
+  "titleisreq": {
+    "TEXT": "தலைப்பு தேவை"
+  },
+  "labelisreq": {
+    "TEXT": "லேபிள் தேவை"
+  },
+  "mintwochar": {
+    "TEXT": "குறைந்தபட்சம் 2 எழுத்துகள்"
+  },
+  "max20char": {
+    "TEXT": "அதிகபட்சம் 20 எழுத்துகள்"
+  },
+  "max50char": {
+    "TEXT": "அதிகபட்சம் 50 எழுத்துகள்"
+  },
+  "save": {
+    "TEXT": "சேமிக்கவும்"
+  },
+  "save&new": {
+    "TEXT": "சேமி & புதியது"
+  },
+  "cancel": {
+    "TEXT": "ரத்து செய்"
+  },
+  "slanguage": {
+    "TEXT": "சேவையக மொழி"
+  },
+  "settings": {
+    "TEXT": "அமைப்புகள்"
+  },
+  "values": {
+    "TEXT": "மதிப்புகள்"
+  },
+  "settings>add": {
+    "TEXT": "அமைப்புகள் > சேர்"
+  },
+  "settings>view": {
+    "TEXT": "அமைப்புகள் > காண்க"
+  },
+  "settings>edit": {
+    "TEXT": "அமைப்புகள் > திருத்து"
+  },
+  "settings>delete": {
+    "TEXT": "அமைப்புகள் > நீக்கு"
+  },
+  "type": {
+    "TEXT": "வகை"
+  },
+  "description": {
+    "TEXT": "விளக்கம்"
+  },
+  "typeisreq": {
+    "TEXT": "வகை தேவை"
+  },
+  "valuesisreq": {
+    "TEXT": "மதிப்புகள் தேவை"
+  },
+  "apiversion": {
+    "TEXT": "ஏபிஐ பதிப்பு"
+  },
+  "ludate": {
+    "TEXT": "கடைசியாக புதுப்பிக்கப்பட்ட தேதி"
+  },
+  "apistatus": {
+    "TEXT": "ஏபிஐ நிலை"
+  },
+  "api>add": {
+    "TEXT": "ஏபிஐ > சேர்"
+  },
+  "api>view": {
+    "TEXT": "ஏபிஐ > காண்க"
+  },
+  "api>edit": {
+    "TEXT": "ஏபிஐ > திருத்து"
+  },
+  "project": {
+    "TEXT": "திட்டம்"
+  },
+  "subproject": {
+    "TEXT": "துணை திட்டம்"
+  },
+  "apiprotocol": {
+    "TEXT": "ஏபிஐ நெறிமுறை"
+  },
+  "apitype": {
+    "TEXT": "ஏபிஐ வகை"
+  },
+  "apititle": {
+    "TEXT": "ஏபிஐ தலைப்பு"
+  },
+  "apirequestmethod": {
+    "TEXT": "ஏபிஐ கோரிக்கை முறை"
+  },
+  "serverlanguage": {
+    "TEXT": "சேவையக மொழி"
+  },
+  "server1": {
+    "TEXT": "சேவையகம் 1"
+  },
+  "server2": {
+    "TEXT": "சேவையகம் 2"
+  },
+  "server3": {
+    "TEXT": "சேவையகம் 3"
+  },
+  "apiurl": {
+    "TEXT": "ஏபிஐ யுஆர்எல்"
+  },
+  "inputfieldname": {
+    "TEXT": "உள்ளீட்டு புலத்தின் பெயர்"
+  },
+  "inputdescription": {
+    "TEXT": "உள்ளீடு விளக்கம்"
+  },
+  "inputdatatype": {
+    "TEXT": "உள்ளீட்டு தரவு வகை"
+  },
+  "inputsamplevalue": {
+    "TEXT": "உள்ளீட்டு மாதிரி மதிப்பு"
+  },
+  "inputrequirement": {
+    "TEXT": "உள்ளீடு தேவை"
+  },
+  "responsefieldname": {
+    "TEXT": "பதில் புலத்தின் பெயர்"
+  },
+  "responsedescription": {
+    "TEXT": "பதில் விளக்கம்"
+  },
+  "responsedatatype": {
+    "TEXT": "பதில் தரவு வகை"
+  },
+  "responsesamplevalue": {
+    "TEXT": "பதில் மாதிரி மதிப்பு"
+  },
+  "responsecode": {
+    "TEXT": "பதில் குறியீடு"
+  },
+  "responsemessage": {
+    "TEXT": "பதில் செய்தி"
+  },
+  "headers": {
+    "TEXT": "தலைப்புகள்"
+  },
+  "body": {
+    "TEXT": "உடல்"
+  },
+  "bodyjsonschema": {
+    "TEXT": "உடல் JSON ஸ்கீமா"
+  },
+  "apiid": {
+    "TEXT": "ஏபிஐ ஐடி"
+  },
+  "projectisreq": {
+    "TEXT": "திட்டம் தேவை"
+  },
+  "apiprotocolisreq": {
+    "TEXT": "ஏபிஐ நெறிமுறை தேவை"
+  },
+  "apitypeisreq": {
+    "TEXT": "ஏபிஐ வகை தேவை"
+  },
+  "apititleisreq": {
+    "TEXT": "ஏபிஐ தலைப்பு தேவை"
+  },
+  "apirequestmethodisreq": {
+    "TEXT": "ஏபிஐ கோரிக்கை முறை தேவை"
+  },
+  "addrecord": {
+    "TEXT": "பதிவைச் சேர்க்கவும்"
+    },
+    "viewrecord": {
+    "TEXT": "பதிவைப் பார்க்கவும்"
+    },
+    "editrecord": {
+    "TEXT": "பதிவைத் திருத்து"
+    },
+    "deleterecord": {
+    "TEXT": "பதிவை நீக்கு"
+    },
+    "downloadrecord": {
+    "TEXT": "பதிவைப் பதிவிறக்கவும்"
+    },
+    "refreshrecord": {
+    "TEXT": "பதிவைப் புதுப்பிக்கவும்"
+    },
+    "export": {
+    "TEXT": "ஏற்றுமதி"
+    },
+    "excel": {
+    "TEXT": "எக்செல்"
+    },
+    "csv": {
+    "TEXT": "சிஎஸ்வி"
+    },
+    "ods": {
+    "TEXT": "ஓடிஎஸ்"
+    },
+    "pdf": {
+    "TEXT": "பி.டி.எஃப்"
+    },
+    "copy": {
+    "TEXT": "நகலெடுக்கவும்"
+    },
+    "cwheaders": {
+    "TEXT": "தலைப்புகளுடன் நகலெடுக்கவும்"
+    },
+    "cwoheaders": {
+    "TEXT": "தலைப்புகள் இல்லாமல் நகலெடு"
+    },
+    "chart": {
+    "TEXT": "விளக்கப்படம்"
+    },
+    "bchart": {
+    "TEXT": "பார் விளக்கப்படம்"
+    },
+    "lchart": {
+    "TEXT": "வரி விளக்கப்படம்"
+    },
+    "pchart": {
+    "TEXT": "பை விளக்கப்படம்"
+    },
+    "nresults": {
+    "TEXT": "முடிவுகள் இல்லை"
+    },
+    "label": {
+      "TEXT": "லேபிள்"
+    },
+  "DASHBOARD1": {
+    "TEXT": "டாஷ்போர்டு"
+   },
+   "HEADER":{
+    "SEARCH": {
+      "TEXT": "Text.."
+    }
+  },
+  "MENUITEMS": {
+    "DASHBOARD": {
+      "TEXT": "டாஷ்போர்டு"
+    },
+    "Api": {
+      "TEXT": "ஏபிஐ"
+    },
+    "Mylinks": {
+      "TEXT": "எனது இணைப்புகள்"
+    },
+   "Exit": {
+      "TEXT": "வெளியேறு"
+    }
+  }
+}

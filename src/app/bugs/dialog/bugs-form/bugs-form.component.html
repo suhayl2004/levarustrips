@@ -1,0 +1,1124 @@
+<div *ngIf="this.action == 'add'">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">Bugs > Add</div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+      <div class="row">
+        <div
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" />
+            <mat-error
+              *ngIf="advanceTableForm.get('title')?.hasError('required')"
+            >
+              Title is required
+            </mat-error>
+            <mat-error
+              *ngIf="advanceTableForm.get('title')?.hasError('minlength')"
+            >
+              Minimum 2 characters
+            </mat-error>
+            <mat-error
+              *ngIf="advanceTableForm.get('title')?.hasError('maxlength')"
+            >
+              Maximum 50 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label> Defect Description</mat-label>
+            <textarea
+              style="height: 82px"
+              matInput
+              formControlName="ddescription"
+            ></textarea>
+            <mat-error
+              *ngIf="
+                advanceTableForm.get('ddescription')?.hasError('minlength')
+              "
+            >
+              Minimum 2 characters
+            </mat-error>
+            <mat-error
+              *ngIf="advanceTableForm.get('ddescription')?.hasError('required')"
+            >
+              Defect description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Assignee</mat-label>
+            <mat-select [disableRipple]="true" formControlName="assignee">
+              <input
+                placeholder="Search"
+                formControlName="searchTextAssignee"
+                class="dropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of apiAllFileds
+                    | assigneeSearch
+                      : advanceTableForm.controls['searchTextAssignee'].value
+                "
+                [value]="row.assignee"
+              >
+                {{ row.assignee }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="advanceTableForm.get('assignee')?.hasError('required')"
+            >
+              Assignee is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Module Name</mat-label>
+            <mat-select [disableRipple]="true" formControlName="mname">
+              <input
+                placeholder="Search"
+                formControlName="searchTextMname"
+                class="dropFullSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of apiAllFileds
+                    | mnameSearch
+                      : advanceTableForm.controls['searchTextMname'].value
+                "
+                [value]="row.mname"
+              >
+                {{ row.mname }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Severity</mat-label>
+            <mat-select [disableRipple]="true" formControlName="severity">
+              <input
+                placeholder="Search"
+                formControlName="searchTextSeverity"
+                class="dropFullSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of apiAllFileds
+                    | severitySearch
+                      : advanceTableForm.controls['searchTextSeverity'].value
+                "
+                [value]="row.severity"
+              >
+                {{ row.severity }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div
+          class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+            style="width: 221px !important"
+          >
+            <mat-label>Link to Requirements</mat-label>
+            <mat-select [disableRipple]="true" formControlName="reqid">
+              <input
+                placeholder="Search"
+                formControlName="searchTextReqId"
+                class="idDropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of reqAllFields
+                    | reqidSearch
+                      : advanceTableForm.controls['searchTextReqId'].value
+                "
+                [value]="row.id"
+              >
+                {{ row.id }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div
+          class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+            style="width: 220px !important"
+          >
+            <mat-label>Link to Test Cases</mat-label>
+            <mat-select [disableRipple]="true" formControlName="tcaseid">
+              <input
+                placeholder="Search"
+                formControlName="searchTextTcaseId"
+                class="idDropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of tcasesAllFields
+                    | tcaseidSearch
+                      : advanceTableForm.controls['searchTextTcaseId'].value
+                "
+                [value]="row.id"
+              >
+                {{ row.id }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div
+          class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+            style="width: 228px !important"
+          >
+            <mat-label>Link to Test Scenarios</mat-label>
+            <mat-select [disableRipple]="true" formControlName="tscenarioid">
+              <input
+                placeholder="Search"
+                formControlName="searchTextTscenariosId"
+                class="idDropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of tscenariosAllFields
+                    | tscenarioidSearch
+                      : advanceTableForm.controls['searchTextTscenariosId']
+                          .value
+                "
+                [value]="row.id"
+              >
+                {{ row.id }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div> -->
+      <div class="row">
+        <div
+          class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4"
+          style="margin-top: -13px"
+        >
+        <mat-form-field
+        class="example-full-width"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>Status</mat-label>
+        <input matInput value="New" readonly />
+      </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4"
+      style="margin-top: -13px">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Priority</mat-label>
+          <mat-select [disableRipple]="true" formControlName="priority">
+            <input
+              placeholder="Search"
+              formControlName="searchTextPriority"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | prioritySearch
+                    : advanceTableForm.controls['searchTextPriority'].value
+              "
+              [value]="row.priority"
+            >
+              {{ row.priority }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4 cupl"
+          style="margin-top: -13px"
+        >
+          <app-single-file-upload
+            formControlName="file"
+            (uploadProgressChanged)="onFileUploadProgress($event)"
+            (fileRemoved)="onFileRemoved()"
+          ></app-single-file-upload>
+          <!-- <mat-error *ngIf="fileUploadError">
+            File upload is not complete. Please wait until the upload is finished.
+          </mat-error> -->
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      style="height: 40px"
+      mat-raised-button
+      color="accent"
+      [disabled]="!checkSubmitButtonState()"
+      [mat-dialog-close]="2"
+      (click)="confirmAddnew()"
+    >
+      Create & Continue
+    </button>
+    <button
+      mat-flat-button
+      (click)="onNoClick()"
+      tabindex="-1"
+      style="float: right; height: 40px; margin-left: 380px"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!checkSubmitButtonState()"
+      [mat-dialog-close]="1"
+      (click)="confirmAdd()"
+      style="float: left; margin-right: 48px"
+    >
+      Create
+    </button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="this.action == 'view'" style="width: 825px !important">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">Bugs > View</div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Title</mat-label>
+          <input matInput value="{{ this.advanceTable.title }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Created Date</mat-label>
+          <input matInput value="{{ this.advanceTable.cdate }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Created By</mat-label>
+          <input
+            matInput
+            value="{{ this.advanceTable.createdby }}"
+            readonly
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Assignee</mat-label>
+          <input matInput value="{{ this.advanceTable.assignee }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Module Name</mat-label>
+          <input matInput value="{{ this.advanceTable.mname }}" readonly />
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Status</mat-label>
+          <input matInput value="{{ this.advanceTable.status }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Frequency</mat-label>
+          <input
+            matInput
+            value="{{ this.advanceTable.frequency }}"
+            readonly
+          />
+        </mat-form-field>
+      </div> -->
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Priority</mat-label>
+          <input matInput value="{{ this.advanceTable.priority }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Estimate</mat-label>
+          <input matInput value="{{ this.advanceTable.emate }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <label
+      *ngIf="showFiles"
+      style="
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      "
+      >Files</label
+    >
+    <div class="row" *ngFor="let file of fileDataArray; let i = index">
+      <div class="set-flex">
+        <h5 class="font-13 mb-1" style="margin-top: 10px">
+          {{ file.name.name }}
+          <small class="text-muted mb-1"
+            >({{ formatFileSize(file.name.size) }})</small
+          >
+        </h5>
+      </div>
+    </div>
+    </form>
+  </mat-dialog-content>
+</div>
+<div *ngIf="this.action == 'edit'" style="width: 825px !important;">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">Bugs > Edit</div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+          <mat-error
+            *ngIf="advanceTableForm.get('title')?.hasError('required')"
+          >
+            Title is required
+          </mat-error>
+          <mat-error
+            *ngIf="advanceTableForm.get('title')?.hasError('minlength')"
+          >
+            Minimum 2 characters
+          </mat-error>
+          <mat-error
+            *ngIf="advanceTableForm.get('title')?.hasError('maxlength')"
+          >
+            Maximum 50 characters
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label> Defect Description</mat-label>
+          <textarea
+            style="height: 82px"
+            matInput
+            formControlName="ddescription"
+          ></textarea>
+          <mat-error
+            *ngIf="advanceTableForm.get('ddescription')?.hasError('required')"
+          >
+            Defect description is required
+          </mat-error>
+          <mat-error
+            *ngIf="
+              advanceTableForm.get('ddescription')?.hasError('minlength')
+            "
+          >
+            Minimum 2 characters
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Assignee</mat-label>
+          <mat-select [disableRipple]="true" formControlName="assignee">
+            <input
+              placeholder="Search"
+              formControlName="searchTextAssignee"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | assigneeSearch
+                    : advanceTableForm.controls['searchTextAssignee'].value
+              "
+              [value]="row.assignee"
+            >
+              {{ row.assignee }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="advanceTableForm.get('assignee')?.hasError('required')"
+          >
+            Assignee is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Module Name</mat-label>
+          <mat-select [disableRipple]="true" formControlName="mname">
+            <input
+              placeholder="Search"
+              formControlName="searchTextMname"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | mnameSearch
+                    : advanceTableForm.controls['searchTextMname'].value
+              "
+              [value]="row.mname"
+            >
+              {{ row.mname }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Severity</mat-label>
+          <mat-select [disableRipple]="true" formControlName="severity">
+            <input
+              placeholder="Search"
+              formControlName="searchTextSeverity"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | severitySearch
+                    : advanceTableForm.controls['searchTextSeverity'].value
+              "
+              [value]="row.severity"
+            >
+              {{ row.severity }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Frequency</mat-label>
+          <mat-select [disableRipple]="true" formControlName="frequency">
+            <input
+              placeholder="Search"
+              formControlName="searchTextFrequency"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | frequencySearch
+                    : advanceTableForm.controls['searchTextFrequency'].value
+              "
+              [value]="row.frequency"
+            >
+              {{ row.frequency }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Status</mat-label>
+          <mat-select [disableRipple]="true" formControlName="status">
+            <input
+              placeholder="Search"
+              formControlName="searchTextStatus"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | statusSearch
+                    : advanceTableForm.controls['searchTextStatus'].value
+              "
+              [value]="row.status"
+            >
+              {{ row.status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Priority</mat-label>
+          <mat-select [disableRipple]="true" formControlName="priority">
+            <input
+              placeholder="Search"
+              formControlName="searchTextPriority"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | prioritySearch
+                    : advanceTableForm.controls['searchTextPriority'].value
+              "
+              [value]="row.priority"
+            >
+              {{ row.priority }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Complexity</mat-label>
+          <mat-select [disableRipple]="true" formControlName="complexity">
+            <input
+              placeholder="Search"
+              formControlName="searchTextComplexity"
+              class="dropSearch"
+              (keydown)="handleInput($event)"
+            />
+            <mat-option
+              *ngFor="
+                let row of apiAllFileds
+                  | complexitySearch
+                    : advanceTableForm.controls['searchTextComplexity'].value
+              "
+              [value]="row.complexity"
+            >
+              {{ row.complexity }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+    </div>
+    <!-- <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Estimate</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerCd"
+            formControlName="emate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerCd"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerCd></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label> Comments</mat-label>
+          <textarea
+            style="height: 82px"
+            matInput
+            formControlName="comments"
+          ></textarea>
+          <mat-error
+            *ngIf="advanceTableForm.get('comments')?.hasError('minlength')"
+          >
+            Minimum 2 characters
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4 cupl"
+        style="margin-top: -13px"
+      >
+        <app-single-file-upload
+          formControlName="file"
+          (uploadProgressChanged)="onFileUploadProgress($event)"
+          (fileRemoved)="onFileRemoved()"
+        ></app-single-file-upload>
+      </div>
+    </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-flat-button
+      (click)="onNoClick()"
+      tabindex="-1"
+      style="float: right; height: 40px; margin-left: 380px"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!checkSubmitButtonState()"
+      [mat-dialog-close]="1"
+      (click)="confirmEdit()"
+      style="float: left; margin-right: 48px"
+    >
+      Update
+    </button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="this.action == 'delete'" style="width: 825px !important">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          Bugs > Delete<br /><br />
+          <span class="del">Are you sure to delete?</span>
+        </div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Title</mat-label>
+          <input matInput value="{{ this.advanceTable.title }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Created Date</mat-label>
+          <input matInput value="{{ this.advanceTable.cdate }}" readonly />
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Created By</mat-label>
+          <input
+            matInput
+            value="{{ this.advanceTable.createdby }}"
+            readonly
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="row">
+
+    </div> -->
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Assignee</mat-label>
+          <input matInput value="{{ this.advanceTable.assignee }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Module Name</mat-label>
+          <input matInput value="{{ this.advanceTable.mname }}" readonly />
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Severity</mat-label>
+          <input matInput value="{{ this.advanceTable.severity }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Frequency</mat-label>
+          <input
+            matInput
+            value="{{ this.advanceTable.frequency }}"
+            readonly
+          />
+        </mat-form-field>
+      </div> -->
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Status</mat-label>
+          <input matInput value="{{ this.advanceTable.status }}" readonly />
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Priority</mat-label>
+          <input matInput value="{{ this.advanceTable.priority }}" readonly />
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4" style="margin-top: -13px;">
+        <mat-form-field
+          class="example-full-width"
+          appearance="outline"
+          subscriptSizing="dynamic"
+        >
+          <mat-label>Estimate</mat-label>
+          <input matInput value="{{ this.advanceTable.emate }}" readonly />
+        </mat-form-field>
+      </div>
+    </div> -->
+    <label
+      *ngIf="showFiles"
+      style="
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      "
+      >Files</label
+    >
+    <div class="row" *ngFor="let file of fileDataArray; let i = index">
+      <div class="set-flex">
+        <h5 class="font-13 mb-1" style="margin-top: 10px">
+          {{ file.name.name }}
+          <small class="text-muted mb-1"
+            >({{ formatFileSize(file.name.size) }})</small
+          >
+        </h5>
+      </div>
+    </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-flat-button
+      (click)="onNoClick()"
+      tabindex="-1"
+      style="float: right; height: 40px; margin-left: 380px"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      [disabled]="!advanceTableForm.valid"
+      [mat-dialog-close]="1"
+      (click)="confirmDelete()"
+      style="float: left; margin-right: 48px"
+    >
+      Delete
+    </button>
+  </mat-dialog-actions>
+</div>
+<div class="addContainer" *ngIf="this.action === 'deleteRecord'">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          Delete {{ count }} {{ count == "1" ? "Record" : "Records" }}?
+        </div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button
+              mat-flat-button
+              (click)="onNoClick()"
+              tabindex="-1"
+              style="float: right"
+            >
+              Cancel
+            </button>
+            <button
+              mat-flat-button
+              color="warn"
+              [mat-dialog-close]="1"
+              (click)="confirmMultiDelete()"
+              style="float: right"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

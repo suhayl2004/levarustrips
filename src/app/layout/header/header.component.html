@@ -1,0 +1,219 @@
+<nav
+  #navbar
+  class="navbar active"
+  style="
+    margin-top: 4px;
+    height: 45px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  "
+>
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="float-start collapse-menu-icon">
+        <li>
+          <button
+            mat-icon-button
+            (click)="mobileMenuSidebarOpen($event, 'overlay-open')"
+            class="sidemenu-collapse"
+          >
+            <app-feather-icons
+              [icon]="'menu'"
+              [class]="'header-icon'"
+            ></app-feather-icons>
+          </button>
+        </li>
+      </ul>
+      <ul class="float-start navbar-nav navbar-left"></ul>
+    </div>
+    <div
+      class="collapse navbar-collapse"
+      [ngClass]="isNavbarCollapsed ? '' : 'show'"
+    >
+      <ul class="nav navbar-nav navbar-left">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li style="margin-top: -13px !important">
+          <div matTooltip="Settings">
+            <button
+              mat-icon-button
+              [disableRipple]="true"
+              class="nav-notification-icons"
+              (click)="toggleDropdown()"
+              style="margin-top: 6px"
+            >
+              <app-feather-icons
+                style="margin-left: 5px !important"
+                [icon]="'settings'"
+                [class]="'header-icon'"
+              ></app-feather-icons>
+            </button>
+            <ul
+              class="settingsMenu"
+              *ngIf="isDropdownVisible"
+              style="width: auto !important; margin-left: -269px"
+            >
+              <input
+                matInput
+                type="search"
+                placeholder="Search"
+                [(ngModel)]="searchSettings"
+                (input)="filterSettingsSidebarItems()"
+              />
+              <div class="companies">Settings</div>
+              <li *ngFor="let sidebarItem of settingsItems">
+                <button
+                  class="settings-item"
+                  [routerLink]="[sidebarItem.path]"
+                  (click)="routerLinkButtonClick()"
+                >
+                  {{ sidebarItem.title }}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item user_profile" style="margin-top: -6px">
+          <!-- Button to trigger the dropdown -->
+          <button
+            mat-button
+            class="profile-button"
+            (click)="companyToggleMenu()"
+          >
+            <div class="chip dropdown-toggle">
+              <span
+              *ngIf="selectedCompany === 'National Banking Corporation'"
+              style="margin-left: 10px">{{ selectedCompany }}</span>
+              <span
+              *ngIf="selectedCompany === 'Levarus Solutions Private Limited'"
+              style="margin-left: 3px">{{ selectedCompany }}</span>
+              <!-- <span
+              *ngIf="selectedCompany === 'Levarus Solutions Private Limited'"
+                class="user_img company-name"
+                style="color: white !important;background-color: red;"
+                >{{ companyLogo }}</span
+              > -->
+
+
+              <span
+              *ngIf="selectedCompany === 'Levarus Solutions Private Limited'"
+                class="user_img company-name"
+                >
+                <img
+                style="margin-top: -2px;margin-left: -2px;"
+                src="assets/images/icons/LL-logo.png"
+                class="user_img"
+                width="25"
+                height="25"
+                alt="User"
+              />
+                </span
+              >
+              <span
+              class="user_img company-name"
+              *ngIf="selectedCompany === 'National Banking Corporation'"
+              >
+              <img
+              style="margin-top: -3px"
+              src="assets/images/user/nbc-company-logo.png"
+              class="user_img"
+              width="25"
+              height="25"
+              alt="User"
+            />
+              </span
+            >
+            </div>
+          </button>
+
+          <ul
+            class="companyMenu"
+            *ngIf="isCompanyDropdownVisible"
+            style="width: auto !important; margin-left: -269px"
+          >
+            <input
+              matInput
+              type="search"
+              placeholder="Search"
+              [(ngModel)]="searchCompany"
+            />
+            <div class="companies">Companies</div>
+            <li *ngFor="let item of filteredCompanyItems">
+              <button
+                class="company-item"
+                [ngClass]="{ selected: selectedCompany === item.cname }"
+                (click)="companyItemsSelect(item.cname,item.clabel,item.clogo)"
+              >
+                {{ item.cname }}
+              </button>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item user_profile" style="margin-top: -6px">
+          <!-- Button to trigger the dropdown -->
+          <button mat-button class="profile-button" (click)="toggleMenu()">
+            <div class="chip dropdown-toggle">
+              <span style="margin-left: 3px">{{ userName }}</span>
+              <img
+                style="margin-top: -3px"
+                src="assets/images/user/profile.png"
+                class="user_img"
+                width="25"
+                height="25"
+                alt="User"
+              />
+            </div>
+          </button>
+
+          <!-- Custom dropdown menu -->
+          <div class="custom-dropdown" [class.show]="isMenuOpen" *ngIf="isMenuOpen">
+            <button class="close-button" (click)="toggleMenu()">
+              &#10005;
+            </button>
+            <img
+              src="assets/images/user/profile.png"
+              class="menu-user-img"
+              alt="User"
+            />
+            <div class="menu-header">
+              <div class="menu-user-info">
+                <!-- <span class="user-email">john&#64;gmail.com</span>
+                <span class="greeting">Hi, John!</span> -->
+                <span class="user-email" style="margin-left: 95px;">{{ userEmail || 'User' }}</span>
+                <span class="greeting">Hi, {{ userName  }}!</span>
+                <div class="menu-body">
+                  <button mat-button class="menu-item" style="margin-left: -13px;width: 168px;"
+                  (click)="toggleResetForm()"
+                  ><i class="material-icons">lock_reset</i> Reset Password</button>
+                  <button mat-button class="menu-item" style="width: 116px;"
+                  (click)="signOut()"
+                  ><i class="material-icons">exit_to_app</i> Sign out</button>
+                </div>
+                        <!-- Reset Password Form -->
+        <!-- <form *ngIf="showResetForm" (ngSubmit)="submitResetPassword()" [formGroup]="resetPasswordForm">
+          <div>
+            <mat-form-field>
+              <mat-label>Current Password</mat-label>
+              <input matInput formControlName="currentPassword" type="password" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>New Password</mat-label>
+              <input matInput formControlName="newPassword" type="password" required />
+            </mat-form-field>
+          </div>
+          <div class="reset-password-actions">
+            <button mat-button type="submit" [disabled]="resetPasswordForm.invalid">
+              Change Password
+            </button>
+            <button mat-button type="button" (click)="toggleResetForm()">Cancel</button>
+          </div>
+        </form> -->
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

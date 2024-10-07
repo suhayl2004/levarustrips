@@ -1,0 +1,25 @@
+.sidebar .menu .list a:hover,
+.sidebar .menu .list a:active {
+  text-decoration: none !important;
+  background-color: #e2e5ef !important;
+  cursor: pointer;
+  color: black !important;
+}
+.sidebar .menu .list a:hover span {
+  color: black !important;
+}
+//adding new active property below
+.ml-menu2:focus {
+  color: #5668f3 !important;
+}
+
+.sidemenu-collapse {
+  height: 50px;
+}
+.bottom-icon {
+  position: absolute;
+  bottom: 20px;
+  left: -6px;
+  width: 100%;
+  text-align: end;
+}

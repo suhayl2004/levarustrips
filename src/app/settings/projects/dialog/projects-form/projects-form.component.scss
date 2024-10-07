@@ -1,0 +1,29 @@
+.del {
+    font-size: 14px;
+    color: red;
+  }
+  .dropSearch {
+    border-radius: 5px;
+    width: 98.2%;
+    margin-left: 7px;
+    padding-left: 6px;
+    height: 35px;
+    border: 1px solid black;
+  }
+  .example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }
+  ::ng-deep .mdc-checkbox__ripple {
+    display: none !important;
+  }

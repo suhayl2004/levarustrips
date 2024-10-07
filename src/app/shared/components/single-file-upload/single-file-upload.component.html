@@ -1,0 +1,165 @@
+<!--Add form upload view-->
+<div class="file-drop-area" *ngIf="receivedAddBooleanValue">
+  <button mat-raised-button color="primary" style="height: 30px; width: 171px">
+    <i class="fa fa-upload" aria-hidden="true"></i> Add attachment
+  </button>
+  <input
+    class="file-input"
+    type="file"
+    (change)="onFileChange($event)"
+    [title]="getTitle()"
+  />
+  <div
+    *ngIf="filesSizeExceededLimit"
+    style="color: red; font-size: 13px !important; margin-top: 10px;width: 330px"
+  >
+    Exceeded Maximum allowed file size limit of 10 MB
+  </div>
+  <div
+    *ngIf="filesExceededLimit"
+    style="color: red; font-size: 13px !important; margin-top: 10px;width: 330px"
+  >
+    Exceeded Maximum allowed file limit of 1 file
+  </div>
+  <div
+    *ngIf="restrictFile"
+    style="
+      color: red;
+      font-size: 13px !important;
+      text-align: start;
+      margin-top: 10px;
+      width: 210px;
+    "
+  >
+    Uploaded file format not allowed
+  </div>
+  <div
+    *ngIf="restrictFile"
+    style="color: red; font-size: 13px !important; text-align: start;width: 620px;"
+  >
+    Supported file formats: {{ supportedFormats }}
+  </div>
+</div>
+<div
+  *ngFor="let uploadedFile of uploadedFiles; let i = index"
+  style="
+    font-size: 13px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  "
+>
+  <div style="width: 214%;margin-top: -44px;margin-left: 185px;">
+    {{ uploadedFile.name }} ({{ formatFileSize(uploadedFile.size) }})
+  </div>
+  <mat-progress-bar
+    mode="determinate"
+    [value]="uploadProgress[i]"
+    style="margin-top: -41px;"
+  ></mat-progress-bar>
+  <div style="margin-top: -41px; margin-left: 10px;">
+    {{ uploadProgress[i] }}%
+  </div>
+  <button mat-icon-button (click)="removeFile(i)" style="margin-top: -43px;">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<!--Edit form upload view-->
+<div class="file-drop-area" *ngIf="receivedEditBooleanValue">
+  <button mat-raised-button color="primary" style="height: 30px; width: 171px">
+    <i class="fa fa-upload" aria-hidden="true"></i> Add attachment
+  </button>
+  <input
+    class="file-input"
+    type="file"
+    (change)="testOnFileChange($event)"
+    [title]="getTestTitle()"
+  />
+  <div
+    *ngIf="filesSizeExceededLimit"
+    style="color: red; font-size: 13px !important; margin-top: 10px;width: 330px"
+  >
+    Exceeded Maximum allowed file size limit of 10 MB
+  </div>
+  <div
+    *ngIf="filesExceededLimit"
+    style="color: red; font-size: 13px !important; margin-top: 10px;width: 330px"
+  >
+    Exceeded Maximum allowed file limit of 1 file!
+  </div>
+  <div
+    *ngIf="restrictFile"
+    style="
+      color: red;
+      font-size: 13px !important;
+      text-align: start;
+      margin-top: 10px;
+      width: 210px;
+    "
+  >
+    Uploaded file format not allowed
+  </div>
+  <div
+    *ngIf="restrictFile"
+    style="color: red; font-size: 13px !important; text-align: start;width: 620px;"
+  >
+    Supported file formats: {{ supportedFormats }}
+  </div>
+</div>
+
+
+<ng-container *ngIf="receivedEditBooleanValue">
+<div *ngFor="let file of fileDataArray; let i = index"
+style="
+font-size: 13px !important;
+display: flex;
+align-items: center;
+justify-content: space-between;
+"
+>
+<div  style="width: 214%;margin-top: -44px;margin-left: 185px;" *ngIf="file.name.name">
+  {{ file.name.name }} ({{ formatFileSize(file.name.size) }})
+</div>
+  <mat-progress-bar
+  *ngIf="file.name.name"
+  mode="determinate"
+  [value]="testuploadProgress[i]"
+  style="margin-top: -41px;"
+></mat-progress-bar>
+<div style="margin-top: -41px; margin-left: 10px;" *ngIf="file.name.name">
+  {{ testuploadProgress[i] }}%
+</div>
+<button mat-icon-button (click)="testremoveFile(i)" style="margin-top: -43px;" *ngIf="file.name.name">
+  <mat-icon>close</mat-icon>
+</button>
+</div>
+</ng-container>
+
+
+<!-- <ng-container *ngIf="receivedEditBooleanValue">
+  <div
+    *ngFor="let adEditFiles of adEditFilesArray; let i = index"
+    style="
+      font-size: 13px !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    "
+  >
+    <div  style="width: 214%;margin-top: -44px;margin-left: 185px;">
+      {{ adEditFiles.name.name }} ({{ formatFileSize(adEditFiles.name.size) }})
+    </div>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="testuploadProgress[i]"
+      style="margin-top: -41px;"
+    ></mat-progress-bar>
+    <div style="margin-top: -41px; margin-left: 10px;">
+      {{ testuploadProgress[i] }}%
+    </div>
+    <button mat-icon-button (click)="testremoveFile(i)" style="margin-top: -43px;">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</ng-container> -->

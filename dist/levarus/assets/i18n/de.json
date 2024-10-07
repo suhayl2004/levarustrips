@@ -1,0 +1,337 @@
+{
+   "aid": {
+     "TEXT": "API-ID"
+    },
+    "api": {
+      "TEXT": "API"
+     },
+  "pcode": {
+    "TEXT": "Projektnummer"
+   },
+   "pname": {
+    "TEXT": "Projektname"
+   },
+   "spcode": {
+    "TEXT": "Unterprojektcode"
+   },
+   "spname": {
+    "TEXT": "Unterprojektname"
+   },
+   "aprotocol": {
+     "TEXT": "API-Protokoll"
+   },
+   "atype": {
+     "TEXT": "API-Typ"
+   },
+   "atitle": {
+     "TEXT": "API-Titel"
+   },
+   "armethod": {
+     "TEXT": "API-Anfragemethode"
+   },
+   "region": {
+     "TEXT": "Region"
+   },
+   "uby": {
+     "TEXT": "Aktualisiert von"
+   },
+   "actions": {
+     "TEXT": "Aktionen"
+    },
+  "mylinks": {
+    "TEXT": "Meine Links"
+  },
+  "adminprivilege": {
+    "TEXT": "Administratorrechte"
+  },
+  "title": {
+    "TEXT": "Titel"
+  },
+  "url": {
+    "TEXT": "URL"
+  },
+  "home": {
+    "TEXT": "Heim"
+  },
+  "dashboard": {
+    "TEXT": "Armaturenbrett"
+  },
+  
+  "mylinks>add": {
+    "TEXT": "Meine Links > Hinzufügen"
+  },
+  "mylinks>view": {
+    "TEXT": "Meine Links > Ansicht"
+  },
+  "mylinks>edit": {
+    "TEXT": "Meine Links > Bearbeiten"
+  },
+  "mylinks>delete": { 
+    "TEXT": "Meine Links > Löschen"
+  },
+  "urlisreq": {
+    "TEXT": "URL ist erforderlich"
+  },
+  "rusuretodelete": {
+    "TEXT": "Bist du sicher, das du das löschen möchtest?"
+  },
+  "delete": {
+    "TEXT": "Löschen"
+  },
+  "record": {
+    "TEXT": "aufzeichnen"
+  },
+  "records": {
+    "TEXT": "Aufzeichnungen"
+  },
+  "titleisreq": {
+    "TEXT": "Titel ist erforderlich"
+  },
+  "labelisreq": {
+    "TEXT": "Etikett ist erforderlich"
+  },
+  "mintwochar": {
+    "TEXT": "Mindestens 2 Zeichen"
+  },
+  "max20char": {
+    "TEXT": "Maximal 20 Zeichen"
+  },
+  "max50char": {
+    "TEXT": "Maximal 50 Zeichen"
+  },
+  "save": {
+    "TEXT": "Speichern"
+  },
+  "save&new": {
+    "TEXT": "Speichern und neu"
+  },
+  "cancel": {
+    "TEXT": "Stornieren"
+  },
+  "slanguage": {
+    "TEXT": "Serversprache"
+  },
+  "settings": {
+    "TEXT": "Einstellungen"
+  },
+  "values": {
+    "TEXT": "Werte"
+  },
+  "settings>add": {
+    "TEXT": "Einstellungen > Hinzufügen"
+  },
+  "settings>view": {
+    "TEXT": "Einstellungen > Ansicht"
+  },
+  "settings>edit": {
+    "TEXT": "Einstellungen > Bearbeiten"
+  },
+  "settings>delete": {
+    "TEXT": "Einstellungen > Löschen"
+  },
+  "type": {
+    "TEXT": "Typ"
+  },
+  "description": {
+    "TEXT": "Beschreibung"
+  },
+  "typeisreq": {
+    "TEXT": "Typ ist erforderlich"
+  },
+  "valuesisreq": {
+    "TEXT": "Werte sind erforderlich"
+  },
+  "apiversion": {
+    "TEXT": "API-Version"
+  },
+  "ludate": {
+    "TEXT": "Datum der letzten Aktualisierung"
+  },
+  "apistatus": {
+    "TEXT": "API-Status"
+  },
+  "api>add": {
+    "TEXT": "API > hinzufügen"
+  },
+  "api>view": {
+    "TEXT": "API > Ansicht"
+  },
+  "api>edit": {
+    "TEXT": "API > Bearbeitung"
+  },
+  "project": {
+    "TEXT": "Projekt"
+  },
+  "subproject": {
+    "TEXT": "Unterprojekt"
+  },
+  "apiprotocol": {
+    "TEXT": "API-Protokoll"
+  },
+  "apitype": {
+    "TEXT": "API-Typ"
+  },
+  "apititle": {
+    "TEXT": "API-Titel"
+  },
+  "apirequestmethod": {
+    "TEXT": "API-Anfragemethode"
+  },
+  "serverlanguage": {
+    "TEXT": "Serversprache"
+  },
+  "server1": {
+    "TEXT": "Server 1"
+  },
+  "server2": {
+    "TEXT": "Server 2"
+  },
+  "server3": {
+    "TEXT": "Server 3"
+  },
+  "apiurl": {
+    "TEXT": "API-URL"
+  },
+  "inputfieldname": {
+    "TEXT": "Eingabefeldname"
+  },
+  "inputdescription": {
+    "TEXT": "Eingabebeschreibung"
+  },
+  "inputdatatype": {
+    "TEXT": "Eingabedatentyp"
+  },
+  "inputsamplevalue": {
+    "TEXT": "Geben Sie den Beispielwert ein"
+  },
+  "inputrequirement": {
+    "TEXT": "Eingabeanforderung"
+  },
+  "responsefieldname": {
+    "TEXT": "Name des Antwortfelds"
+  },
+  "responsedescription": {
+    "TEXT": "Antwortbeschreibung"
+  },
+  "responsedatatype": {
+    "TEXT": "Antwortdatentyp"
+  },
+  "responsesamplevalue": {
+    "TEXT": "Antwortbeispielwert"
+  },
+  "responsecode": {
+    "TEXT": "Antwortcode"
+  },
+  "responsemessage": {
+    "TEXT": "Antwortnachricht"
+  },
+  "headers": {
+    "TEXT": "Überschriften"
+  },
+  "body": {
+    "TEXT": "Körper"
+  },
+  "bodyjsonschema": {
+    "TEXT": "Body-JSON-Schema"
+  },
+  "apiid": {
+    "TEXT": "API-ID"
+  },
+  "projectisreq": {
+    "TEXT": "Projekt ist erforderlich"
+  },
+  "apiprotocolisreq": {
+    "TEXT": "API-Protokoll ist erforderlich"
+  },
+  "apitypeisreq": {
+    "TEXT": "API-Typ ist erforderlich"
+  },
+  "apititleisreq": {
+    "TEXT": "API-Titel ist erforderlich"
+  },
+  "apirequestmethodisreq": {
+    "TEXT": "API-Anfragemethode ist erforderlich"
+  },
+  "addrecord": {
+    "TEXT": "Datensatz hinzufügen"
+    },
+    "viewrecord": {
+    "TEXT": "Datensatz anzeigen"
+    },
+    "editrecord": {
+    "TEXT": "Datensatz bearbeiten"
+    },
+    "deleterecord": {
+    "TEXT": "Aufzeichnung löschen"
+    },
+    "downloadrecord": {
+    "TEXT": "Datensatz herunterladen"
+    },
+    "refreshrecord": {
+    "TEXT": "Datensatz aktualisieren"
+    },
+    "export": {
+    "TEXT": "Export"
+    },
+    "excel": {
+    "TEXT": "Excel"
+    },
+    "csv": {
+    "TEXT": "CSV"
+    },
+    "ods": {
+    "TEXT": "ODS"
+    },
+    "pdf": {
+    "TEXT": "PDF"
+    },
+    "copy": {
+    "TEXT": "Kopieren"
+    },
+    "cwheaders": {
+    "TEXT": "Mit Kopfzeilen kopieren"
+    },
+    "cwoheaders": {
+    "TEXT": "Ohne Kopfzeilen kopieren"
+    },
+    "chart": {
+    "TEXT": "Diagramm"
+    },
+    "bchart": {
+    "TEXT": "Balkendiagramm"
+    },
+    "lchart": {
+    "TEXT": "Liniendiagramm"
+    },
+    "pchart": {
+    "TEXT": "Kuchendiagramm"
+    },
+    "nresults": {
+    "TEXT": "Keine Ergebnisse"
+    },
+    "label": {
+      "TEXT": "Etikett"
+    },
+  "DASHBOARD1": {
+    "TEXT": "Armaturenbrett"
+   },
+   "HEADER":{
+    "SEARCH": {
+      "TEXT": "Search.."
+    }
+  },
+  "MENUITEMS": {
+    "DASHBOARD": {
+      "TEXT": "Armaturenbrett"
+    },
+    "Api": {
+      "TEXT": "API"
+    },
+    "Mylinks": {
+      "TEXT": "Meine Links"
+    },
+   "Exit": {
+      "TEXT": "Ausfahrt"
+    }
+  }
+}

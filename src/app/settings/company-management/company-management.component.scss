@@ -1,0 +1,123 @@
+.green-icon {
+    background-color: rgb(26, 236, 26);
+  }
+  .icon-size-reduce {
+    height: 24px;
+    width: 25px;
+  }
+  ::ng-deep.mat-mdc-snack-bar-container.snackbar-delete .mdc-snackbar__surface {
+    background-color: red !important;
+    margin-top: -100px !important;
+  }
+  ::ng-deep.mat-mdc-snack-bar-label .mdc-snackbar__label {
+    color: white !important;
+  }
+  ::ng-deep.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    max-width: auto !important;
+    min-width: auto !important;
+  }
+  table {
+    width: 100%;
+  }
+  .mat-mdc-table {
+    white-space: nowrap;
+  }
+  table {
+    border: 1px solid #ddd; // adjust border thickness and color
+  }
+  .refresh {
+    height: 38px;
+    position: relative;
+    top: 2px;
+    width: 40px;
+  }
+  .fa-2x {
+    font-size: 1.7em;
+  }
+  .xlsx {
+    height: 28px;
+    position: relative;
+    top: -2px;
+    width: 29px;
+  }
+  .csv {
+    height: 28px;
+    position: relative;
+    top: -2px;
+    width: 29px;
+  }
+  ::ng-deep.mdc-checkbox__background {
+    border-color: lightgray !important;
+  }
+  table th {
+    background-color: #f7f7f7 !important;
+  }
+  .requirements-component ::ng-deep .mdc-text-field--outlined .mdc-notched-outline {
+    height: 22px;
+    margin-top: 9px;
+  }
+  
+  th {
+    position: relative;
+    font-size: 12px;
+  }
+  
+  .resizer {
+    display: none;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  th:hover .resizer {
+    display: inline-block;
+  }
+  
+  table th {
+    position: relative;
+  }
+  
+  table th:hover .resize-handle {
+    opacity: 1;
+    transition: .3s ease-in-out;
+  }
+  
+  .resize-handle {
+    display: inline-block;
+    border-right: 2px solid lightgray;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    cursor: col-resize;
+    opacity: 0;
+  }
+  
+  .resize-handle:hover {
+    width: 20px;
+  }
+  th{
+    font-size: 12px;
+  }
+  td{
+    font-size: 12px;
+  }
+  .title{
+    font-size: 12px;
+  }
+  .hidden-column {
+    display: none;
+  }
+  mat-menu .menu-item {
+    display: block;
+    margin: 8px 0;
+  }
+  .menu-item {
+    width: 170px;
+  }
+  ::ng-deep.mat-mdc-menu-content {
+    height: 100px !important;
+  }

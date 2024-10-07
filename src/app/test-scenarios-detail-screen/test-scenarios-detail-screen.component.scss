@@ -1,0 +1,225 @@
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 150px;
+}
+table {
+  width: 100%;
+}
+.mat-mdc-table {
+  white-space: nowrap;
+}
+table {
+  border: 1px solid #ddd; // adjust border thickness and color
+}
+.refresh {
+  height: 38px;
+  position: relative;
+  top: 2px;
+  width: 40px;
+}
+.fa-2x {
+  font-size: 1.7em;
+}
+.xlsx {
+  height: 28px;
+  position: relative;
+  top: -2px;
+  width: 29px;
+}
+.csv {
+  height: 28px;
+  position: relative;
+  top: -2px;
+  width: 29px;
+}
+.materialTableHeader .header-buttons-left .tbl-title h2 {
+  font-weight: 500;
+}
+.materialTableHeader h2 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+  color: #5b626b;
+}
+.mat-mdc-menu-content {
+  height: 200px !important;
+}
+.materialTableHeader .tbl-export-btn {
+  float: right;
+  margin: 0px 37px;
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.ck-editor__editable {
+  min-height: 400px;
+}
+.reset-button {
+  background-color: white;
+  border: 1px solid #369fd9;
+  border-color: #369fd9;
+  color: #369fd9 !important;
+}
+
+.reset-button:hover {
+  background-color: #369fd9;
+  color: #fff !important;
+}
+
+.add-button {
+  background-color: #369fd9 !important;
+  border: 1px solid #369fd9 !important;
+  border-color: #369fd9 !important;
+  color: #fff !important;
+}
+
+.comment-container {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-author {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.comment-timestamp {
+  color: #888;
+}
+
+.comment-body {
+  font-size: 14px;
+  margin-left: 50px;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 0px;
+  margin-left: auto;
+}
+
+.req-id-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.req-id-label {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.req-id-value {
+  flex-grow: 1;
+  text-align: left;
+}
+.steps-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.steps-table th,
+.steps-table td {
+  border: 1px solid lightgray;
+  padding: 8px;
+  text-align: left;
+}
+::ng-deep.mdc-checkbox__background {
+  border-color: lightgray !important;
+}
+table th {
+  background-color: #f7f7f7 !important;
+}
+.requirements-component
+  ::ng-deep
+  .mdc-text-field--outlined
+  .mdc-notched-outline {
+  height: 22px;
+  margin-top: 9px;
+}
+
+th {
+  position: relative;
+  font-size: 12px;
+}
+
+.resizer {
+  display: none;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+th:hover .resizer {
+  display: inline-block;
+}
+
+table th {
+  position: relative;
+}
+
+table th:hover .resize-handle {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.resize-handle {
+  display: inline-block;
+  border-right: 2px solid lightgray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  cursor: col-resize;
+  opacity: 0;
+}
+
+.resize-handle:hover {
+  width: 20px;
+}
+th {
+  font-size: 12px;
+}
+td {
+  font-size: 12px;
+}
+.title {
+  font-size: 12px;
+}
+.hidden-column {
+  display: none;
+}
+mat-menu .menu-item {
+  display: block;
+  margin: 8px 0;
+}
+.menu-item {
+  width: 170px;
+}
+
+.mat-mdc-header-row {
+  height: 10px !important;
+}
+.mat-mdc-row {
+  height: 40px !important;
+}

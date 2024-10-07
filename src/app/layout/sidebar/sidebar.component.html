@@ -1,0 +1,289 @@
+<div>
+  <!-- Left Sidebar -->
+  <aside
+  id="leftsidebar"
+  class="sidebar"
+>
+    <div class="navbar-header">
+      <ul class="nav navbar-nav flex-row">
+        <li class="nav-item logo">
+          <a class="navbar-brand" routerLink="dashboard">
+            <!-- <img
+              src="assets/images/icons/Logo for Landing Page.png"
+              style="
+                width: 100px;
+                height: 100px;
+                margin-top: -12px;
+                margin-left: 25px;
+              "
+            /> -->
+            <img
+            *ngIf="isCollapsed"
+            src="assets/images/icons/LL-logo.png"
+            style="
+              width: 35px;
+              height: 35px;
+              margin-top: 6px;
+              margin-left: -3px;
+              
+            "
+          />
+            <img
+            src="assets/images/icons/trips.png"
+            style="
+              width: 100px;
+              height: 100px;
+              margin-top: -12px;
+              margin-left: 35px;
+            "
+          />
+            <!-- <span class="logo-name">Levarus Trips</span> -->
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Menu -->
+    <div class="menu">
+      <ng-scrollbar [style.height]="listMaxHeight + 'px'" visibility="hover">
+        <ul class="list">
+          <!-- Top Most level menu -->
+          <li
+            *ngFor="let sidebarItem of sidebarItems"
+            [routerLinkActive]="
+              sidebarItem.submenu.length !== 0 ? 'active' : 'active-top'
+            "
+          >
+            <a
+              [routerLink]="
+                sidebarItem.class === '' ? [sidebarItem.path] : null
+              "
+              [ngClass]="[sidebarItem.class]"
+              (click)="callToggleMenu($event, sidebarItem.submenu.length)"
+              class="menu-top"
+            >
+              <ng-container *ngIf="sidebarItem.title === 'SAP Support'">
+                <img
+                  src="assets/images/icons/Project.png"
+                  alt="Bugs Icon"
+                  class="sidebarIcon"
+                  style="
+                    height: 18px !important;
+                    width: 18px !important;
+                    margin-top: -5px;
+                  "
+                />
+              </ng-container>
+              <span
+                class="hide-menu"
+                style="font-size: 0.7875rem; margin-left: 4px"
+                >{{ sidebarItem.title }}
+              </span>
+              <span
+                *ngIf="sidebarItem.badge !== ''"
+                [ngClass]="[sidebarItem.badgeClass]"
+                >{{ sidebarItem.badge }}</span
+              >
+            </a>
+            <ul class="ml-menu" *ngIf="sidebarItem.submenu.length > 0">
+              <li
+                *ngFor="
+                  let sidebarSubItem1 of sidebarItem.submenu;
+                  let i = index
+                "
+                [routerLinkActive]="
+                  sidebarSubItem1.submenu.length > 0 ? '' : 'active'
+                "
+              >
+                <a
+                  [routerLink]="
+                    sidebarSubItem1.submenu.length > 0
+                      ? null
+                      : [sidebarSubItem1.path]
+                  "
+                  (click)="
+                    callToggleMenu($event, sidebarSubItem1.submenu.length)
+                  "
+                  [ngClass]="[sidebarSubItem1.class]"
+                >
+                  <ng-container *ngIf="sidebarSubItem1.title === 'Dashboard'">
+                    <img
+                      src="assets/images/icons/Dashboard.png"
+                      alt="Bugs Icon"
+                      class="sidebarIcon"
+                      style="
+                        height: 18px !important;
+                        width: 18px !important;
+                        margin-left: -10px;
+                      "
+                    />
+                  </ng-container>
+                  <ng-container
+                    *ngIf="sidebarSubItem1.title === 'Requirements'"
+                  >
+                    <img
+                      src="assets/images/icons/Requirements.png"
+                      alt="Bugs Icon"
+                      class="sidebarIcon"
+                      style="
+                        height: 18px !important;
+                        width: 18px !important;
+                        margin-left: -10px;
+                      "
+                    />
+                  </ng-container>
+                  <ng-container *ngIf="sidebarSubItem1.title === 'Test'">
+                    <img
+                      src="assets/images/icons/Test.png"
+                      alt="Bugs Icon"
+                      class="sidebarIcon"
+                      style="
+                        height: 18px !important;
+                        width: 18px !important;
+                        margin-left: -10px;
+                      "
+                    />
+                  </ng-container>
+                  <ng-container *ngIf="sidebarSubItem1.title === 'Bugs'">
+                    <img
+                      src="assets/images/icons/Bug.png"
+                      alt="Bugs Icon"
+                      class="sidebarIcon"
+                      style="
+                        height: 23px !important;
+                        width: 21px !important;
+                        margin-left: -10px;
+                      "
+                    />
+                  </ng-container>
+                  <ng-template #defaultIcon>
+                    <i-feather
+                      [name]="sidebarItem.submenu[i].icon"
+                      class="sidebarIcon"
+                    ></i-feather>
+                  </ng-template>
+
+                  {{ sidebarSubItem1.title }}
+                </a>
+                <ul
+                  class="ml-menu-2"
+                  *ngIf="sidebarSubItem1.submenu.length > 0"
+                  style="margin-left: 12px"
+                >
+                  <li
+                    *ngFor="let sidebarSubItem2 of sidebarSubItem1.submenu"
+                    [routerLinkActive]="
+                      sidebarSubItem2.submenu.length > 0 ? '' : 'active'
+                    "
+                  >
+                    <a
+                      [routerLink]="
+                        sidebarSubItem2.submenu.length > 0
+                          ? null
+                          : [sidebarSubItem2.path]
+                      "
+                      (click)="
+                        callToggleMenu($event, sidebarSubItem2.submenu.length)
+                      "
+                      [ngClass]="[sidebarSubItem2.class]"
+                    >
+                      <ng-container *ngIf="sidebarSubItem2.title === 'Cycles'">
+                        <img
+                          src="assets/images/icons/Cycles.png"
+                          alt="Bugs Icon"
+                          class="sidebarIcon"
+                          style="
+                            height: 18px !important;
+                            width: 18px !important;
+                            margin-left: -13px;
+                          "
+                        />
+                      </ng-container>
+                      <ng-container
+                        *ngIf="sidebarSubItem2.title === 'Scenarios'"
+                      >
+                        <img
+                          src="assets/images/icons/Test Scenario.png"
+                          alt="Bugs Icon"
+                          class="sidebarIcon"
+                          style="
+                            height: 18px !important;
+                            width: 18px !important;
+                            margin-left: -13px;
+                          "
+                        />
+                      </ng-container>
+                      <ng-container *ngIf="sidebarSubItem2.title === 'Cases'">
+                        <img
+                          src="assets/images/icons/Test Case.png"
+                          alt="Bugs Icon"
+                          class="sidebarIcon"
+                          style="
+                            height: 18px !important;
+                            width: 18px !important;
+                            margin-left: -13px;
+                          "
+                        />
+                      </ng-container>
+                      {{ sidebarSubItem2.title }}
+                    </a>
+                    <!-- Third level menu -->
+                    <ul
+                      class="ml-menu-3"
+                      *ngIf="sidebarSubItem2.submenu.length > 0"
+                    >
+                      <li
+                        *ngFor="let sidebarSubItem3 of sidebarSubItem2.submenu"
+                        [routerLinkActive]="
+                          sidebarSubItem3.submenu.length > 0 ? '' : 'active'
+                        "
+                      >
+                        <a
+                          [routerLink]="
+                            sidebarSubItem3.submenu.length > 0
+                              ? null
+                              : [sidebarSubItem3.path]
+                          "
+                          (click)="
+                            callToggleMenu(
+                              $event,
+                              sidebarSubItem3.submenu.length
+                            )
+                          "
+                          [ngClass]="[sidebarSubItem3.class]"
+                        >
+                          {{ sidebarSubItem3.title }}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </ng-scrollbar>
+    </div>
+    <div class="bottom-icon">
+      <button
+        mat-icon-button
+        *ngIf="!isCollapsed"
+        (click)="callSidemenuCollapse()"
+        class="sidemenu-collapse"
+      >
+        <img
+          src="assets/images/icons/left-arrow.png"
+        />
+      </button>
+      <button
+      mat-icon-button
+      *ngIf="isCollapsed"
+      (click)="callSidemenuCollapse()"
+      class="sidemenu-collapse"
+    >
+      <img src="assets/images/icons/right-arrow.png" />
+    </button>
+    </div>
+    <!-- #Menu -->
+  </aside>
+  <!-- #END# Left Sidebar -->
+</div>

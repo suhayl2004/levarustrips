@@ -1,0 +1,468 @@
+<section class="content">
+  <div class="content-block" style="margin-top: -95px">
+    <div class="block-header">
+      <form class="register-form m-4" [formGroup]="Form">
+        <mat-tab-group>
+          <mat-tab>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel [expanded]="panelOpenState">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      More about the test cycle
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p class="req-id-container">
+                    <span class="req-id-label"
+                      ><strong>Test Cycle Id</strong></span
+                    >
+                    <span class="req-id-value">{{ data.id }}</span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"
+                      ><strong>Created Date</strong></span
+                    >
+                    <span class="req-id-value">{{
+                      data.cdate | date : "dd/MM/yyyy"
+                    }}</span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"><strong>Title</strong></span>
+                    <span class="req-id-value">{{ data.title }}</span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"><strong>Owner</strong></span>
+                    <span class="req-id-value">{{ data.owner }}</span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"
+                      ><strong>Description</strong></span
+                    >
+                    <span
+                      class="req-id-value"
+                      [innerHTML]="data.description"
+                    ></span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"><strong>Test Type</strong></span>
+                    <span
+                      class="req-id-value"
+                      [innerHTML]="data.testtype"
+                    ></span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"><strong>Sprint</strong></span>
+                    <span class="req-id-value" [innerHTML]="data.sprint"></span>
+                  </p>
+                  <p class="req-id-container">
+                    <span class="req-id-label"
+                      ><strong>Created By</strong></span
+                    >
+                    <span
+                      class="req-id-value"
+                      [innerHTML]="data.createdby"
+                    ></span>
+                  </p>
+                </mat-expansion-panel> </mat-accordion
+              ><br />
+
+              <div class="row" style="margin-top: -5px">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="card">
+                    <div class="materialTableHeader" style="height: 45px;">
+                      <div class="left">
+                        <ul class="header-buttons-left ms-0">
+                          <li class="tbl-title" style="margin-top: -13px;">
+                            <h2 class="title">Plan & Execute</h2>
+                          </li>
+                          <li class="tbl-search-box" style="margin-top: -14px;">
+                            <label for="search-input"
+                              ><i class="material-icons search-icon"
+                              style="font-size: 19px;margin-top: -8px;">search</i
+                              ></label
+                            >
+                            <input
+                              placeholder="Search"
+                              type="text"
+                              #filter
+                              class="browser-default search-field"
+                              aria-label="Search box"
+                              style="height: 23px;"
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="right">
+                        <ul class="tbl-export-btn" style="margin-top: -5px;">
+                          <li class="tbl-header-btn">
+                            <div class="m-l-10" matTooltip="Create Content">
+                              <button
+                                mat-icon-button
+                                style="color: violet; margin-left: -19px"
+                                (click)="addNew()"
+                              >
+                                <img
+                                style="height: 18px;width: 18px;"
+                                src="assets/images/icons/add.png" />
+                              </button>
+                            </div>
+                          </li>
+                          <li class="tbl-header-btn">
+                            <div
+                              class="m-l-10"
+                              [hidden]="!selection.hasValue()"
+                              matTooltip="Group Delete"
+                            >
+                              <button
+                                mat-icon-button
+                                style="color: #ff5205; margin-left: -19px"
+                                (click)="openDeletebulk()"
+                              >
+                                <img
+                                style="height: 18px;width: 18px;"
+                                src="assets/images/icons/delete.png" />
+                              </button>
+                            </div>
+                          </li>
+                          <li class="tbl-header-btn">
+                            <div class="m-l-10" matTooltip="Refresh">
+                              <button
+                                mat-icon-button
+                                style="margin-left: -19px"
+                              >
+                                <img
+                                style="height: 18px;width: 18px;"
+                                src="assets/images/icons/refresh-arrow.png" />
+                              </button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="body overflow-auto">
+                      <div
+                        class="responsive_table"
+                        style="overflow: auto !important; margin-top: -15px"
+                      >
+                        <table
+                          mat-table
+                          [dataSource]="selectedItems"
+                          matSort
+                          class="mat-elevation-z8"
+                          multiTemplateDataRows
+                        >
+                          <!-- Checkbox Column -->
+                          <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                              <input type="checkbox"
+                              (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [ngClass]="'tbl-checkbox'"
+                                style="cursor: pointer;"
+                              />
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                              <input type="checkbox"
+                              (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)"
+                              [ngClass]="'tbl-checkbox'"
+                                style="cursor: pointer;"
+                              />
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="tcid">
+                            <th
+                              mat-header-cell
+                              *matHeaderCellDef
+                              mat-sort-header
+                            >
+                              Test Case Id
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                              {{ row.id }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="tctitle">
+                            <th
+                              mat-header-cell
+                              *matHeaderCellDef
+                              mat-sort-header
+                            >
+                              Test Case Title
+                            </th>
+                            <td
+                              mat-cell
+                              *matCellDef="let row"
+                              [class.example-expanded-row]="
+                                expandedElement === row
+                              "
+                              (click)="
+                                expandedElement =
+                                  expandedElement === row ? null : row
+                              "
+                            >
+                              <mat-icon
+                                [class.example-expanded-row]="
+                                  expandedElement === row
+                                "
+                                (click)="
+                                  expandedElement =
+                                    expandedElement === row ? null : row
+                                "
+                                [ngClass]="{
+                                  'rotate-up': isRowExpanded(row),
+                                  'rotate-down': !isRowExpanded(row)
+                                }"
+                                style="cursor: pointer; vertical-align: middle"
+                              >
+                                {{
+                                  isRowExpanded(row)
+                                    ? "expand_less"
+                                    : "expand_more"
+                                }}
+                              </mat-icon>
+                              {{ row.title }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="tscenario">
+                            <th
+                              mat-header-cell
+                              *matHeaderCellDef
+                              mat-sort-header
+                            >
+                              Test Scenario
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                              {{ row.tscenario }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="assignedto">
+                            <th
+                              mat-header-cell
+                              *matHeaderCellDef
+                              mat-sort-header
+                            >
+                              Assigned To
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                              Executed by : {{ row.assignedto }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="eresult">
+                            <th
+                              mat-header-cell
+                              *matHeaderCellDef
+                              mat-sort-header
+                            >
+                              Execution Result
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                              {{ row.eresults }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="expandedDetail">
+                            <td
+                              mat-cell
+                              *matCellDef="let element"
+                              [attr.colspan]="displayedColumns.length"
+                            >
+                              <div
+                                class="example-element-detail"
+                                [@detailExpand]="
+                                  element == expandedElement
+                                    ? 'expanded'
+                                    : 'collapsed'
+                                "
+                              >
+                                <!-- Separate Table for items without tscenario -->
+                                <ng-container *ngIf="!element.tscenario">
+                                  <table
+                                    class="steps-table"
+                                    style="width: 100%"
+                                  >
+                                    <thead style="background-color: lightgray">
+                                      <tr>
+                                        <th>Step</th>
+                                        <th>Test Step</th>
+                                        <th>Expected Result</th>
+                                        <th>Result</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <ng-container
+                                        *ngFor="
+                                          let row of getStepsForElement(
+                                            element
+                                          );
+                                          trackBy: trackByStepNumber
+                                        "
+                                      >
+                                        <tr>
+                                          <td>{{ row.stepNumber }}</td>
+                                          <td>{{ row.tstep }}</td>
+                                          <td>{{ row.expecresult }}</td>
+                                          <td>
+                                            <form>
+                                              <select
+                                                name="subject"
+                                                [(ngModel)]="row.result"
+                                              >
+                                                <option
+                                                  value="Awaiting"
+                                                  selected="selected"
+                                                >
+                                                  Awaiting
+                                                </option>
+                                                <option value="Pass">
+                                                  Pass
+                                                </option>
+                                                <option value="Fail">
+                                                  Fail
+                                                </option>
+                                                <option value="N/A">N/A</option>
+                                                <option value="On hold">
+                                                  On hold
+                                                </option>
+                                              </select>
+                                            </form>
+                                          </td>
+                                        </tr>
+                                      </ng-container>
+                                    </tbody>
+                                  </table>
+                                </ng-container>
+
+                                <!-- Separate Table for items with tscenario -->
+                                <ng-container *ngIf="element.tscenario">
+                                  <table
+                                    class="steps-table"
+                                    style="width: 100%; margin-top: 20px"
+                                  >
+                                    <thead style="background-color: lightgray">
+                                      <tr>
+                                        <th>Step</th>
+                                        <th>Test Step</th>
+                                        <th>Expected Result</th>
+                                        <th>Result</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <ng-container
+                                        *ngFor="
+                                          let row of getStepsForElement(
+                                            element
+                                          );
+                                          trackBy: trackByStepNumber
+                                        "
+                                      >
+                                        <tr>
+                                          <td>{{ row.stepNumber }}</td>
+                                          <td>{{ row.tstep }}</td>
+                                          <td>{{ row.expecresult }}</td>
+                                          <td>
+                                            <form>
+                                              <select
+                                                name="subject"
+                                                [(ngModel)]="row.result"
+                                              >
+                                                <option
+                                                  value="Awaiting"
+                                                  selected="selected"
+                                                >
+                                                  Awaiting
+                                                </option>
+                                                <option value="Pass">
+                                                  Pass
+                                                </option>
+                                                <option value="Fail">
+                                                  Fail
+                                                </option>
+                                                <option value="N/A">N/A</option>
+                                                <option value="On hold">
+                                                  On hold
+                                                </option>
+                                              </select>
+                                            </form>
+                                          </td>
+                                        </tr>
+                                      </ng-container>
+                                    </tbody>
+                                  </table>
+                                </ng-container>
+                                <div>
+                                  <div class="example-element-position">
+                                    <div></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                          </ng-container>
+                          <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                          ></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="let element; columns: displayedColumns"
+                            class="example-element-row"
+                            [class.example-expanded-row]="
+                              expandedElement === element
+                            "
+                            (click)="
+                              expandedElement =
+                                expandedElement === element ? null : element
+                            "
+                            [style.cursor]="'pointer'"
+                          ></tr>
+                          <tr
+                            mat-row
+                            *matRowDef="let row; columns: ['expandedDetail']"
+                            class="example-detail-row"
+                          ></tr>
+                        </table>
+                      </div>
+                      <!-- Loading spinner -->
+                      <div
+                        *ngIf="exampleDatabase?.isTblLoading"
+                        class="tbl-spinner"
+                      >
+                        <mat-progress-spinner
+                          color="primary"
+                          [diameter]="40"
+                          mode="indeterminate"
+                        >
+                        </mat-progress-spinner>
+                      </div>
+                      <div
+                        *ngIf="!exampleDatabase?.isTblLoading"
+                        class="no-results"
+                        [style.display]="
+                          selectedItems.length === 0 ? '' : 'none'
+                        "
+                      >
+                        No Results
+                      </div>
+                      <div class="requirements-component">
+                        <mat-paginator
+                          style="height: 41px"
+                          #paginator
+                          [length]="selectedItems.length"
+                          [pageIndex]="0"
+                          [pageSize]="10"
+                          [pageSizeOptions]="[5, 10, 25, 100]"
+                        >
+                        </mat-paginator>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </form>
+    </div>
+  </div>
+</section>

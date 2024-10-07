@@ -1,0 +1,260 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f7;
+  overflow-x: hidden;
+}
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login-box {
+  background-color: white;
+  border-radius: 40px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+  width: 580px;
+  height: 550px;
+  max-width: 90%;
+  position: relative;
+}
+
+.login-box h1 {
+  font-size: 40px;
+}
+
+.apple-logo img {
+  width: 160px;
+  margin-bottom: 0px;
+}
+
+.top-images {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.top-left {
+  height: 20px;
+  margin-left: 20px;
+}
+
+.top-right {
+  height: 55px;
+  margin-right: 20px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d1d6;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #0071e3;
+  box-shadow: 0 0 5px rgba(0, 113, 227, 0.5);
+  height: 30px;
+  border: 2px solid #0071e3;
+}
+
+.input-group input::placeholder {
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+
+.input-group input:focus::placeholder {
+  transform: translateY(-15px) scale(0.8);
+  font-size: 12px;
+  color: #0071e3;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  outline: none;
+  width: 100%;
+  transition: height 0.3s ease;
+}
+
+.arrow-btn {
+  background-color: #f5f5f7;
+  color: #0071e3;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #d1d1d6;
+  transition: height 0.3s ease, padding 0.3s ease;
+}
+
+.arrow-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.arrow-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.input-group input:focus ~ .arrow-btn {
+  height: 50px;
+  padding: 15px 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.form-actions a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.form-actions a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0071e3;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.flash-messages {
+  margin-bottom: 20px;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.wooden-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #deb887;
+  border: 2px solid #8b4513;
+  border-radius: 5px;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  width: 340px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wooden-banner:hover {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.wooden-banner span {
+  margin-right: 20px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 25px solid #8b4513; /* Color of the arrow */
+}
+
+.mat-form-field {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.background-image {
+  width: 100%;
+  height: 100vh;
+}
+
+.register-form {
+  position: absolute;
+  top: 89%;
+  left: 87%;
+  transform: translate(-50%, -30%);
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.wooden-banner {
+  cursor: pointer;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.arrow {
+  cursor: pointer;
+  margin-top: 0px;
+}

@@ -1,0 +1,638 @@
+<div class="addContainer" style="width: 825px !important;" *ngIf="this.action == 'add'">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+            User Management > Add
+          </div>
+        </div>
+      </div>
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="modal-close-button"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form m-4"
+        [formGroup]="advanceTableForm"
+        (ngSubmit)="(submit)"
+      >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="uname" />
+            <mat-error
+              *ngIf="advanceTableForm.get('uname')?.hasError('required')"
+            >
+              User name is required
+            </mat-error>
+            <mat-error
+            *ngIf="advanceTableForm.get('uname')?.hasError('minlength')"
+          >
+          Minimum 2 characters
+          </mat-error>
+          <mat-error
+          *ngIf="advanceTableForm.get('uname')?.hasError('maxlength')"
+        >
+        Maximum 50 characters
+        </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Email Id</mat-label>
+            <input matInput formControlName="emailid" />
+            <mat-error
+              *ngIf="advanceTableForm.get('emailid')?.hasError('required')"
+            >
+              Email id is required
+            </mat-error>
+            <mat-error
+            *ngIf="advanceTableForm.get('emailid')?.hasError('pattern')"
+          >
+          Enter a valid email id
+          </mat-error>
+          <mat-error
+          *ngIf="advanceTableForm.get('emailid')?.hasError('maxlength')"
+        >
+        Maximum 50 characters
+        </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+            <mat-icon style="cursor: pointer;"
+             matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error
+              *ngIf="advanceTableForm.get('password')?.hasError('required')"
+            >
+              Password is required
+            </mat-error>
+            <mat-error
+            *ngIf="advanceTableForm.get('password')?.hasError('pattern')"
+          >
+          Password must be at least 8 characters long,one uppercase,one lowercase,one special character & one number
+          </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Company</mat-label>
+            <mat-select [disableRipple]="true" formControlName="company" multiple>
+              <input
+                placeholder="Search"
+                formControlName="searchTextCompany"
+                class="dropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of companyAllFileds
+                    | companySearch
+                      : advanceTableForm.controls['searchTextCompany'].value
+                "
+                [value]="row.company"
+              >
+                {{ row.company }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Project</mat-label>
+            <mat-select [disableRipple]="true" formControlName="project" multiple>
+              <input
+                placeholder="Search"
+                formControlName="searchTextProject"
+                class="dropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of projectAllFileds
+                    | projectSearch
+                      : advanceTableForm.controls['searchTextProject'].value
+                "
+                [value]="row.project"
+              >
+                {{ row.project }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row">
+              <button
+                mat-raised-button
+                color="accent"
+                [disabled]="!advanceTableForm.valid"
+                [mat-dialog-close]="2"
+                (click)="confirmAddnew()"
+              >
+              Create & Continue
+              </button>
+              <button
+                mat-flat-button
+                (click)="onNoClick()"
+                tabindex="-1"
+                style="float: right"
+              >
+              Cancel
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!advanceTableForm.valid"
+                [mat-dialog-close]="1"
+                (click)="confirmAdd()"
+                style="float: right"
+              >
+              Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+<div class="addContainer" style="width: 825px !important;" *ngIf="this.action == 'view'">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+            User Management > View
+          </div>
+        </div>
+      </div>
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="modal-close-button"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form m-4"
+        [formGroup]="advanceTableForm"
+        (ngSubmit)="(submit)"
+      >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>User Name</mat-label>
+            <input matInput value="{{this.advanceTable.uname}}" readonly/>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Email Id</mat-label>
+            <input matInput value="{{this.advanceTable.emailid}}" readonly />
+          </mat-form-field>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+            <mat-form-field
+              class="example-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label>Password</mat-label>
+              <input matInput value="{{this.advanceTable.password}}" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+            <mat-form-field
+              class="example-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label>Company</mat-label>
+              <input matInput value="{{this.advanceTable.company}}" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+            <mat-form-field
+              class="example-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label>Project</mat-label>
+              <input matInput value="{{this.advanceTable.project}}" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<div class="addContainer" style="width: 825px !important;" *ngIf="this.action == 'edit'">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+            User Management > Edit
+          </div>
+        </div>
+      </div>
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="modal-close-button"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form m-4"
+        [formGroup]="advanceTableForm"
+        (ngSubmit)="(submit)"
+      >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="uname" />
+            <mat-error
+              *ngIf="advanceTableForm.get('uname')?.hasError('required')"
+            >
+              User name is required
+            </mat-error>
+            <mat-error
+            *ngIf="advanceTableForm.get('uname')?.hasError('minlength')"
+          >
+          Minimum 2 characters
+          </mat-error>
+          <mat-error
+          *ngIf="advanceTableForm.get('uname')?.hasError('maxlength')"
+        >
+        Maximum 50 characters
+        </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Email Id</mat-label>
+            <input matInput formControlName="emailid" />
+            <mat-error
+              *ngIf="advanceTableForm.get('emailid')?.hasError('required')"
+            >
+              Email id is required
+            </mat-error>
+            <mat-error
+            *ngIf="advanceTableForm.get('emailid')?.hasError('pattern')"
+          >
+          Enter a valid email id
+          </mat-error>
+          <mat-error
+          *ngIf="advanceTableForm.get('emailid')?.hasError('maxlength')"
+        >
+        Maximum 50 characters
+        </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+            <mat-icon style="cursor: pointer;"
+             matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error
+              *ngIf="advanceTableForm.get('password')?.hasError('required')"
+            >
+              Password is required
+            </mat-error>
+            <mat-error
+            *ngIf="advanceTableForm.get('password')?.hasError('pattern')"
+          >
+          Password must be at least 8 characters long,one uppercase,one lowercase,one special character & one number
+          </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Company</mat-label>
+            <mat-select [disableRipple]="true" formControlName="company" multiple>
+              <input
+                placeholder="Search"
+                formControlName="searchTextCompany"
+                class="dropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of companyAllFileds
+                    | companySearch
+                      : advanceTableForm.controls['searchTextCompany'].value
+                "
+                [value]="row.company"
+              >
+                {{ row.company }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Project</mat-label>
+            <mat-select [disableRipple]="true" formControlName="project" multiple>
+              <input
+                placeholder="Search"
+                formControlName="searchTextProject"
+                class="dropSearch"
+                (keydown)="handleInput($event)"
+              />
+              <mat-option
+                *ngFor="
+                  let row of projectAllFileds
+                    | projectSearch
+                      : advanceTableForm.controls['searchTextProject'].value
+                "
+                [value]="row.project"
+              >
+                {{ row.project }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+  
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row">
+              <button
+                mat-flat-button
+                (click)="onNoClick()"
+                tabindex="-1"
+                style="float: right"
+              >
+              Cancel
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!advanceTableForm.valid"
+                [mat-dialog-close]="1"
+                (click)="confirmEdit()"
+                style="float: right"
+              >
+              Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="addContainer"  style="width: 825px !important;" *ngIf="this.action === 'delete'">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+           User Management > Delete<br /><br />
+            <span class="del">Are you sure to delete?</span>
+          </div>
+        </div>
+      </div>
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="modal-close-button"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form m-4"
+        [formGroup]="advanceTableForm"
+        (ngSubmit)="(submit)"
+        style="margin-top:10px !important"
+      >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>User Name</mat-label>
+            <input matInput value="{{this.advanceTable.uname}}" readonly/>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+          <mat-form-field
+            class="example-full-width"
+            appearance="outline"
+            subscriptSizing="dynamic"
+          >
+            <mat-label>Email Id</mat-label>
+            <input matInput value="{{this.advanceTable.emailid}}" readonly />
+          </mat-form-field>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+            <mat-form-field
+              class="example-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label>Password</mat-label>
+              <input matInput value="{{this.advanceTable.password}}" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+            <mat-form-field
+              class="example-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label>Company</mat-label>
+              <input matInput value="{{this.advanceTable.company}}" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+            <mat-form-field
+              class="example-full-width"
+              appearance="outline"
+              subscriptSizing="dynamic"
+            >
+              <mat-label>Project</mat-label>
+              <input matInput value="{{this.advanceTable.project}}" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row">
+              <button
+                mat-flat-button
+                (click)="onNoClick()"
+                tabindex="-1"
+                style="float: right"
+              >
+                Cancel
+              </button>
+              <button
+                mat-flat-button
+                color="warn"
+                [mat-dialog-close]="1"
+                (click)="confirmDelete()"
+                style="float: right"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<div class="addContainer" *ngIf="this.action === 'deleteRecord'">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+            Delete {{ count }}
+            {{
+              count == "1"
+                ? "Record"
+                : "Records"
+            }}?
+          </div>
+        </div>
+      </div>
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="modal-close-button"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form m-4"
+        [formGroup]="advanceTableForm"
+        (ngSubmit)="(submit)"
+      >
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row">
+              <button
+                mat-flat-button
+                (click)="onNoClick()"
+                tabindex="-1"
+                style="float: right"
+              >
+                Cancel
+              </button>
+              <button
+                mat-flat-button
+                color="warn"
+                [mat-dialog-close]="1"
+                (click)="confirmDelete()"
+                style="float: right"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

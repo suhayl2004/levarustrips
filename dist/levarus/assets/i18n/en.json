@@ -1,0 +1,336 @@
+{
+   "aid": {
+     "TEXT": "API ID"
+    },
+    "api": {
+      "TEXT": "API"
+     },
+  "pcode": {
+    "TEXT": "Project Code"
+   },
+   "pname": {
+    "TEXT": "Project Name"
+   },
+   "spcode": {
+    "TEXT": "Sub Project Code"
+   },
+   "spname": {
+    "TEXT": "Sub Project Name"
+   },
+   "aprotocol": {
+     "TEXT": "API Protocol"
+   },
+   "atype": {
+     "TEXT": "API Type"
+   },
+   "atitle": {
+     "TEXT": "API Title"
+   },
+   "armethod": {
+     "TEXT": "API Request Method"
+   },
+   "region": {
+     "TEXT": "Region"
+   },
+   "uby": {
+     "TEXT": "Updated By"
+   },
+   "actions": {
+     "TEXT": "Actions"
+    },
+  "mylinks": {
+    "TEXT": "My Links"
+  },
+  "adminprivilege": {
+    "TEXT": "Admin Privilege"
+  },
+  "home": {
+    "TEXT": "Home"
+  },
+  "url": {
+    "TEXT": "URL"
+  },
+  "title": {
+    "TEXT": "Title"
+  },
+  "dashboard": {
+    "TEXT": "Dashboard"
+  },
+  "mylinks>add": {
+    "TEXT": "Mylinks > Add"
+  },
+  "mylinks>view": {
+    "TEXT": "Mylinks > View"
+  },
+  "mylinks>edit": {
+    "TEXT": "Mylinks > Edit"
+  },
+  "mylinks>delete": { 
+    "TEXT": "Mylinks > Delete"
+  },
+  "urlisreq": {
+    "TEXT": "URL is required"
+  },
+  "rusuretodelete": {
+    "TEXT": "Are you sure to delete?"
+  },
+  "delete": {
+    "TEXT": "Delete"
+  },
+  "record": {
+    "TEXT": "record"
+  },
+  "records": {
+    "TEXT": "records"
+  },
+  "titleisreq": {
+    "TEXT": "Title is required"
+  },
+  "labelisreq": {
+    "TEXT": "Label is required"
+  },
+  "mintwochar": {
+    "TEXT": "Minimum 2 characters"
+  },
+  "max20char": {
+    "TEXT": "Maximum 20 characters"
+  },
+  "max50char": {
+    "TEXT": "Maximum 50 characters"
+  },
+  "save": {
+    "TEXT": "Save"
+  },
+  "save&new": {
+    "TEXT": "Save & New"
+  },
+  "cancel": {
+    "TEXT": "Cancel"
+  },
+  "settings": {
+    "TEXT": "Settings"
+  },
+  "values": {
+    "TEXT": "Values"
+  },
+  "slanguage": {
+    "TEXT": "Server Language"
+  },
+  "settings>add": {
+    "TEXT": "Settings > Add"
+  },
+  "settings>view": {
+    "TEXT": "Settings > View"
+  },
+  "settings>edit": {
+    "TEXT": "Settings > Edit"
+  },
+  "settings>delete": {
+    "TEXT": "Settings > Delete"
+  },
+  "type": {
+    "TEXT": "Type"
+  },
+  "description": {
+    "TEXT": "Description"
+  },
+  "typeisreq": {
+    "TEXT": "Type is required"
+  },
+  "valuesisreq": {
+    "TEXT": "Values is required"
+  },
+  "apiversion": {
+    "TEXT": "API Version"
+  },
+  "ludate": {
+    "TEXT": "Last Updated Date"
+  },
+  "apistatus": {
+    "TEXT": "API Status"
+  },
+  "api>add": {
+    "TEXT": "API > Add"
+  },
+  "api>view": {
+    "TEXT": "API > View"
+  },
+  "api>edit": {
+    "TEXT": "API > Edit"
+  },
+  "project": {
+    "TEXT": "Project"
+  },
+  "subproject": {
+    "TEXT": "Sub Project"
+  },
+  "apiprotocol": {
+    "TEXT": "API Protocol"
+  },
+  "apitype": {
+    "TEXT": "API Type"
+  },
+  "apititle": {
+    "TEXT": "API Title"
+  },
+  "apirequestmethod": {
+    "TEXT": "API Request Method"
+  },
+  "serverlanguage": {
+    "TEXT": "Server Language"
+  },
+  "server1": {
+    "TEXT": "Server 1"
+  },
+  "server2": {
+    "TEXT": "Server 2"
+  },
+  "server3": {
+    "TEXT": "Server 3"
+  },
+  "apiurl": {
+    "TEXT": "API URL"
+  },
+  "inputfieldname": {
+    "TEXT": "Input Field Name"
+  },
+  "inputdescription": {
+    "TEXT": "Input Description"
+  },
+  "inputdatatype": {
+    "TEXT": "Input Data Type"
+  },
+  "inputsamplevalue": {
+    "TEXT": "Input Sample Value"
+  },
+  "inputrequirement": {
+    "TEXT": "Input Requirement"
+  },
+  "responsefieldname": {
+    "TEXT": "Response Field Name"
+  },
+  "responsedescription": {
+    "TEXT": "Response Description"
+  },
+  "responsedatatype": {
+    "TEXT": "Response Data Type"
+  },
+  "responsesamplevalue": {
+    "TEXT": "Response Sample Value"
+  },
+  "responsecode": {
+    "TEXT": "Response Code"
+  },
+  "responsemessage": {
+    "TEXT": "Response Message"
+  },
+  "headers": {
+    "TEXT": "Headers"
+  },
+  "body": {
+    "TEXT": "Body"
+  },
+  "bodyjsonschema": {
+    "TEXT": "Body JSON Schema"
+  },
+  "apiid": {
+    "TEXT": "API Id"
+  },
+  "projectisreq": {
+    "TEXT": "Project is required"
+  },
+  "apiprotocolisreq": {
+    "TEXT": "API protocol is required"
+  },
+  "apitypeisreq": {
+    "TEXT": "API type is required"
+  },
+  "apititleisreq": {
+    "TEXT": "API title is required"
+  },
+  "apirequestmethodisreq": {
+    "TEXT": "API request method is required"
+  },
+  "addrecord": {
+    "TEXT": "Add Record"
+    },
+    "viewrecord": {
+    "TEXT": "View Record"
+    },
+    "editrecord": {
+    "TEXT": "Edit Record"
+    },
+    "deleterecord": {
+    "TEXT": "Delete Record"
+    },
+    "downloadrecord": {
+    "TEXT": "Download Record"
+    },
+    "refreshrecord": {
+    "TEXT": "Refresh Record"
+    },
+    "export": {
+    "TEXT": "Export"
+    },
+    "excel": {
+    "TEXT": "Excel"
+    },
+    "csv": {
+    "TEXT": "CSV"
+    },
+    "ods": {
+    "TEXT": "ODS"
+    },
+    "pdf": {
+    "TEXT": "PDF"
+    },
+    "copy": {
+    "TEXT": "Copy"
+    },
+    "cwheaders": {
+    "TEXT": "Copy With Headers"
+    },
+    "cwoheaders": {
+    "TEXT": "Copy Without Headers"
+    },
+    "chart": {
+    "TEXT": "Chart"
+    },
+    "bchart": {
+    "TEXT": "Bar Chart"
+    },
+    "lchart": {
+    "TEXT": "Line Chart"
+    },
+    "pchart": {
+    "TEXT": "Pie Chart"
+    },
+    "nresults": {
+    "TEXT": "No Results"
+    },
+    "label": {
+      "TEXT": "Label"
+    },
+  "DASHBOARD1": {
+    "TEXT": "Dashboard"
+   },
+   "HEADER":{
+    "SEARCH": {
+      "TEXT": "Text.."
+    }
+  },
+  "MENUITEMS": {
+    "DASHBOARD": {
+      "TEXT": "Dashboard"
+    },
+    "Api": {
+      "TEXT": "API"
+    },
+    "Mylinks": {
+      "TEXT": "My Links"
+    },
+   "Exit": {
+      "TEXT": "Exit"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+<div
+  class="addContainer"
+  style="width: 825px !important"
+  *ngIf="this.action == 'add'"
+>
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">Create Content</div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+      <div>
+        <mat-tab-group
+          mat-stretch-tabs="false"
+          mat-align-tabs="start"
+          style="margin-top: -30px"
+        >
+          <mat-tab label="Test Cases">
+            <div style="width: 145% !important; margin-left: -296px !important">
+              <app-tsc-cycle-table
+                [dataSource]="dataSourceTscCycle"
+              ></app-tsc-cycle-table>
+            </div>
+          </mat-tab>
+          <mat-tab label="Test Scenarios">
+            <div style="width: 145% !important; margin-left: -296px !important">
+              <app-test-scenarios
+                [dataSource]="dataSourceTestScenarios"
+                [hideAddButton]="true"
+              ></app-test-scenarios>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button
+              mat-raised-button
+              color="accent"
+              [disabled]="!advanceTableForm.valid"
+              [mat-dialog-close]="2"
+              (click)="confirmAddnew()"
+            >
+              Create & Continue
+            </button>
+            <button
+              mat-flat-button
+              (click)="onNoClick()"
+              tabindex="-1"
+              style="float: right"
+            >
+              Cancel
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!advanceTableForm.valid"
+              [mat-dialog-close]="1"
+              (click)="confirmAdd()"
+              style="float: right"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="addContainer" *ngIf="this.action === 'deleteRecord'">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          Delete {{ count }} {{ count == "1" ? "Record" : "Records" }}?
+        </div>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      (click)="dialogRef.close()"
+      class="modal-close-button"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form
+      class="register-form m-4"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="(submit)"
+    >
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button
+              mat-flat-button
+              (click)="onNoClick()"
+              tabindex="-1"
+              style="float: right"
+            >
+              Cancel
+            </button>
+            <button
+              mat-flat-button
+              color="warn"
+              [mat-dialog-close]="1"
+              (click)="confirmDelete()"
+              style="float: right"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

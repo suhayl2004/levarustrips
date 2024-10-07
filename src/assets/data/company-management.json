@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "cname": "xyz company",
+        "ccode": "C0001"
+    },
+    {
+        "id": "2",
+        "cname": "abc company",
+        "ccode": "C0002"
+    },
+    {
+        "id": "3",
+        "cname": "asd company",
+        "ccode": "C0003"
+    },
+    {
+        "id": "4",
+        "cname": "qwe company",
+        "ccode": "C0004"
+    },
+    {
+        "id": "5",
+        "cname": "zxc company",
+        "ccode": "C0005"
+    },
+    {
+        "id": "6",
+        "cname": "mnb company",
+        "ccode": "C0006"
+    },
+    {
+        "id": "7",
+        "cname": "lkj company",
+        "ccode": "C0007"
+    },
+    {
+        "id": "8",
+        "cname": "poi company",
+        "ccode": "C0008"
+    }
+]

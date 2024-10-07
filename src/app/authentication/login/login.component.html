@@ -1,0 +1,35 @@
+<body>
+  <div class="image-container">
+    <img src="assets/images/user/Loin Page Design.png" class="background-image" />
+    <form
+      class="register-form"
+      [formGroup]="advanceTableForm"
+      (ngSubmit)="confirmLogIn()"
+    >
+      <div class="wooden-banner" (click)="toggleEmailField()">
+        <span *ngIf="!showEmailInput">Please enter email ID</span>
+        <mat-form-field *ngIf="showEmailInput" class="example-full-width" appearance="outline" subscriptSizing="dynamic">
+          <mat-label *ngIf="!isEmail">Email Id</mat-label>
+          <mat-label *ngIf="isEmail && confirmedEmail">{{ confirmedEmail }}</mat-label>
+          <input *ngIf="!isEmail && !confirmedEmail" matInput formControlName="emailid" />
+          <mat-error *ngIf="advanceTableForm.get('emailid')?.hasError('required')">Email id is required</mat-error>
+          <!-- <mat-error *ngIf="advanceTableForm.get('emailid')?.hasError('pattern')">Enter a valid email id</mat-error> -->
+          <!-- <mat-error *ngIf="advanceTableForm.get('emailid')?.hasError('maxlength')">Maximum 50 characters</mat-error> -->
+
+          <input *ngIf="isEmail && confirmedEmail"
+          placeholder="Enter your password"
+          matInput formControlName="password" type="password" />
+          <mat-error *ngIf="advanceTableForm.get('password')?.hasError('required')">Password is required</mat-error>
+          <!-- <mat-error *ngIf="advanceTableForm.get('password')?.hasError('pattern')">Enter a valid password</mat-error> -->
+        </mat-form-field>
+
+        
+        
+        <!-- <div class="arrow" (click)="confirmLogIn()"></div> -->
+         <div class="arrow">
+          <button style="background: none;display: none;" (click)="confirmLogIn()"></button>
+         </div>
+      </div>
+    </form>
+  </div>
+</body>

@@ -1,0 +1,52 @@
+.del {
+    font-size: 14px;
+    color: red;
+  }
+  .dropSearch {
+    border-radius: 5px;
+    width: 98%;
+    margin-left: 7px;
+    padding-left: 6px;
+    height: 35px;
+    border: 1px solid black;
+  }
+  ::ng-deep .cupl .mdc-button__label{z-index: 0 !important;}
+  :host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px;
+  }
+  .ck-editor__editable {
+    min-height: 400px;
+  }
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .lrTextArea {
+    width: 45%;
+    height: 100px;
+    resize: none;
+    // margin-left: 10px;
+    border: 1px solid lightgray;
+  }
+  .lrTextArea:focus {
+    width: 45%;
+    height: 100px;
+    resize: none;
+    // margin-left: 10px;
+    border: transparent !important;
+  }
+
+  .step {
+    margin-left: -48px;
+    width: 82px;
+  }
+  

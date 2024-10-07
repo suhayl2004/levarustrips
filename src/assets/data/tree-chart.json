@@ -1,0 +1,17 @@
+{
+  "name": "200",
+  "children": [
+    {
+      "name": "Loan 50"
+    },
+    {
+      "name": "Deposit 40"
+    },
+    {
+      "name": "SB/Account 30"
+    },
+    {
+      "name": "Current A/C 80"
+    }
+  ]
+}

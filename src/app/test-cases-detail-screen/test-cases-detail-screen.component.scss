@@ -1,0 +1,100 @@
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 150px;
+}
+.ck-editor__editable {
+  min-height: 400px;
+}
+.reset-button {
+  background-color: white;
+  border: 1px solid #369fd9;
+  border-color: #369fd9;
+  color: #369fd9 !important;
+}
+
+.reset-button:hover {
+  background-color: #369fd9;
+  color: #fff !important;
+}
+
+.add-button {
+  background-color: #369fd9 !important;
+  border: 1px solid #369fd9 !important;
+  border-color: #369fd9 !important;
+  color: #fff !important;
+}
+
+.comment-container {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-author {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.comment-timestamp {
+  color: #888;
+}
+
+.comment-body {
+  font-size: 14px;
+  margin-left: 50px;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 0px;
+  margin-left: auto;
+}
+
+.req-id-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.req-id-label {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.req-id-value {
+  flex-grow: 1;
+  text-align: left;
+}
+.steps-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.steps-table th,
+.steps-table td {
+  border: 1px solid lightgray;
+  padding: 8px;
+  text-align: left;
+}
+
+.mat-mdc-header-row {
+  height: 10px !important;
+}
+.mat-mdc-row {
+  height: 40px !important;
+}

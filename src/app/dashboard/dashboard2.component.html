@@ -1,0 +1,529 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb
+        [title]="getTranslation('Dashboard')"
+        [items]="[getTranslation('Home')]"
+        [active_item]="getTranslation('Dashboard')"
+      ></app-breadcrumb>
+      <ngx-spinner [type]="typeSelected"></ngx-spinner>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <h3 style="font-weight: 600; font-size: 1.125rem; letter-spacing: 1px">
+          {{ this.greeting }}, {{ userName }}
+        </h3>
+        <h6 style="color: rgba(163, 163, 163, 1)">
+          {{ icon }} {{ currentDate | date : "EEEE, MMM d, y, h:mm:ss a" }}
+        </h6>
+      </div>
+      <div class="issues-summary">
+        <div *ngFor="let issue of issues" class="issue-item">
+          <div class="issue-count">{{ issue.count }}</div>
+          <div class="issue-label">{{ issue.label }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -10px">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: 140px">
+                  Status Wise Bugs
+                </h6>
+                <select
+                  [(ngModel)]="selectedBugStatusDay"
+                  (ngModelChange)="onBugStatusDayChange($event)"
+                  class="custom-select"
+                  style="cursor: pointer; margin-left: 202px; padding-left: 5px"
+                >
+                  <option
+                    *ngFor="let day of selectBugStatusDay"
+                    [value]="day.id"
+                  >
+                    {{ day.value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="selectedBugStatusDay === 6"
+            style="margin-top: 20px; margin-left: 4px"
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>Start Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="startPicker"
+                [(ngModel)]="bugStatusEndDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="startPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>End Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endPicker"
+                [(ngModel)]="bugStatusEndDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-button (click)="applyBugStatusDateRange()">
+              Apply
+            </button>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div
+                echarts
+                [options]="bugStatusChartOption"
+                class="demo-chart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: 140px">
+                  Ageing Chart
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div
+                echarts
+                [options]="ageingChartOption"
+                class="demo-chart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -12px">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: auto">
+                  Test Cycle Execution Status
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div
+                echarts
+                [options]="tcaseStatusChartOption"
+                class="demo-chart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: auto">
+                  Owner Wise Status
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div
+                echarts
+                [options]="ownerStatusChartOption"
+                class="demo-chart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -10px">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: 140px">
+                  Bugs By Module
+                </h6>
+                <select
+                  [(ngModel)]="selectedBugModuleDay"
+                  (ngModelChange)="onBugModuleDayChange($event)"
+                  class="custom-select"
+                  style="cursor: pointer; margin-left: 202px; padding-left: 5px"
+                >
+                  <option
+                    *ngFor="let day of selectBugModuleDay"
+                    [value]="day.id"
+                  >
+                    {{ day.value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="selectedBugModuleDay === 6"
+            style="margin-top: 20px; margin-left: 4px"
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>Start Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="startPicker"
+                [(ngModel)]="bugModuleStartDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="startPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>End Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endPicker"
+                [(ngModel)]="bugModuleEndDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-button (click)="applyBugModuleDateRange()">
+              Apply
+            </button>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div
+                echarts
+                [options]="bugsByModuleChartOption"
+                class="demo-chart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: auto">
+                  Test Case By Module
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div id="main" style="width: 500px; height: 400px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -10px">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="height: 473px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: 200px">
+                  Requirements By Module
+                </h6>
+                <select
+                  [(ngModel)]="selectedReqModuleDay"
+                  (ngModelChange)="onReqModuleDayChange($event)"
+                  class="custom-select"
+                  style="cursor: pointer; margin-left: 140px; padding-left: 5px"
+                >
+                  <option
+                    *ngFor="let day of selectReqModuleDay"
+                    [value]="day.id"
+                  >
+                    {{ day.value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="selectedReqModuleDay === 6"
+            style="margin-top: 20px; margin-left: 4px"
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>Start Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="startPicker"
+                [(ngModel)]="reqModuleStartDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="startPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>End Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endPicker"
+                [(ngModel)]="reqModuleEndDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-button (click)="applyReqModuleDateRange()">
+              Apply
+            </button>
+          </div>
+          <div class="body">
+            <div id="chart">
+              <div
+                echarts
+                [options]="reqByModuleChartOption"
+                class="demo-chart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -15px">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="
+            height: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: auto !important;
+          "
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: auto">
+                  Assignee Wise Status
+                </h6>
+              </div>
+            </div>
+          </div>
+          <table class="steps-table" style="margin: 10px">
+            <thead style="background-color: lightgray">
+              <tr>
+                <th *ngFor="let item of assignWiseStatusHeader">{{ item }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of assignWiseStatusData">
+                <td>{{ item.assignee }}</td>
+                <td *ngFor="let status of assignWiseStatusHeader.slice(1)">
+                  {{ item[status] || 0 }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix" style="margin-top: -15px">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="
+            height: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: auto !important;
+          "
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: auto">
+                  Module Wise Owner Status
+                </h6>
+              </div>
+            </div>
+          </div>
+          <table class="steps-table" style="margin: 10px">
+            <thead style="background-color: lightgray">
+              <tr>
+                <th *ngFor="let item of moduleWiseOwnerStatusHeader">
+                  {{ item }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of moduleWiseOwnerStatusData">
+                <td>{{ item.mname }}</td>
+                <td *ngFor="let status of moduleWiseOwnerStatusHeader.slice(1)">
+                  {{ item[status] || 0 }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix" style="margin-top: -15px">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div
+          class="card"
+          style="
+            height: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: auto !important;
+          "
+        >
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <h6 style="font-size: 17px; margin: 0; width: auto">
+                  Module Wise Status
+                </h6>
+              </div>
+            </div>
+          </div>
+          <table class="steps-table" style="margin: 10px">
+            <thead style="background-color: lightgray">
+              <tr>
+                <th *ngFor="let item of moduleWiseStatusHeader">{{ item }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of moduleWiseStatusData">
+                <td>{{ item.mname }}</td>
+                <td *ngFor="let status of moduleWiseStatusHeader.slice(1)">
+                  {{ item[status] || 0 }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
